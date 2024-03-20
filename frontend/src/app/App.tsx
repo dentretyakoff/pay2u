@@ -1,9 +1,8 @@
-import "./App.css";
 import { AppRouter } from "../providers/router";
 
 function App() {
   return (
-    <div>
+    <div className="app">
       <AppRouter />
     </div>
   );

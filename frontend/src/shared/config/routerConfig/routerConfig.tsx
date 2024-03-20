@@ -1,5 +1,6 @@
 import { RouteProps } from "react-router-dom";
 import { MainPage } from "../../../pages/MainPage";
+import { NotFoundPage } from "../../../pages/NotFoundPage";
 
 export enum AppRoutes {
   MAIN = "main",
@@ -9,7 +10,7 @@ export enum AppRoutes {
   //   ACTIVE_SERVICE_INFO = "active_service_info",
 
   // last
-  //   NOT_FOUND = "not_found",
+  NOT_FOUND = "not_found",
 }
 
 export const RouterPath: Record<AppRoutes, string> = {
@@ -18,7 +19,7 @@ export const RouterPath: Record<AppRoutes, string> = {
   //   [AppRoutes.SUBSCRIPTION]: "/subscription",
   //   [AppRoutes.ACTIVE_SERVICES]: "/active_services",
   //   [AppRoutes.ACTIVE_SERVICE_INFO]: "/active_service_info",
-  //   [AppRoutes.NOT_FOUND]: "*",
+  [AppRoutes.NOT_FOUND]: "*",
 };
 
 export const routerConfig: Record<AppRoutes, RouteProps> = {
@@ -42,8 +43,8 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
   //     path: RouterPath.active_service_info,
   //     element: <ActiveServiceInfoPage />,
   //   },
-  //   [AppRoutes.NOT_FOUND]: {
-  //     path: RouterPath.not_found,
-  //     element: <NotFoundPage />,
-  //   },
+  [AppRoutes.NOT_FOUND]: {
+    path: RouterPath.not_found,
+    element: <NotFoundPage />,
+  },
 };
