@@ -11,7 +11,9 @@ module.exports = {
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
   },
   plugins: ["react-refresh"],
   rules: {
@@ -27,5 +29,6 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
   },
 };
