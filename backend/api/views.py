@@ -1,6 +1,6 @@
 from rest_framework import mixins, viewsets
 
-from api.serializers import CategorySerializer
+from api.serializers import CategorySerializer, ServiceSerializer
 from subscriptions.models import Category, Service
 
 
@@ -17,4 +17,4 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
                                  viewsets.GenericViewSet):
     """Получает сервисы списком или по одному."""
     queryset = Service.objects.all()
-    serializer_class = CategorySerializer
+    serializer_class = ServiceSerializer
