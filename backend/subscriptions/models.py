@@ -10,6 +10,11 @@ class Service(models.Model):
     description = models.TextField('Описание cервиса')
     color = models.CharField('Цвет', max_length=7)
     image = models.ImageField('Лого сервиса', upload_to='services/')
+    category = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE,
+        related_name='services',
+        verbose_name='Категория')
 
 
 class Category(models.Model):
@@ -30,11 +35,6 @@ class Subscription(models.Model):
         on_delete=models.CASCADE,
         related_name='subscriptions',
         verbose_name='Сервис')
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.CASCADE,
-        related_name='categories',
-        verbose_name='Категория')
 
 
 class Favorite(models.Model):
