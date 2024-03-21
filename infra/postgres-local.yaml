@@ -1,5 +1,7 @@
 version: '3.8'
 
+volumes:
+  pg_data_pay2u:
 
 services:
   postgres-local:
@@ -12,6 +14,3 @@ services:
       - '5432:5432'
     env_file:
       - ../.env
-
-volumes:
-  pg_data_pay2u:
