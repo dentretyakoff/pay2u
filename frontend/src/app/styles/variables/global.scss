@@ -1,0 +1,44 @@
+:root {
+  --font-family-main: "Inter", "Times New Roman", serif;
+  --font-family-secondary: Navigo, "Times New Roman", serif;
+  --bg-color: #fff;
+  --primary-color: #000;
+  --inverted-primary-color: #fff;
+  --secondary-color: #fff;
+  --inverted-secondary-color: #000;
+  --accent-color: #ea417f;
+
+  // xs
+  --font-size-xs: 13px;
+  --font-line-xs: 16px;
+  --font-xs: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
+  // s
+  --font-size-s: 15px;
+  --font-line-s: 18px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
+  // m
+  --font-size-m: 17px;
+  --font-line-m: 20px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+
+  // l
+  --font-size-l: 20px;
+  --font-line-l: 20px;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+  // xl
+  --font-size-xl: 21px;
+  --font-line-xl: 24px;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+  // Sizes
+
+  // z-indexes
+  --modal-z-index: 10;
+
+  // Colors
+
+  // Shadows
+}
