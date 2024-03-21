@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from subscriptions.models import Category, Service
+from subscriptions.models import Category, Service, UserSubscription
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -19,4 +19,11 @@ class ServiceSerializer(serializers.ModelSerializer):
     """Сериализатор сервисов."""
     class Meta:
         model = Service
+        fields = '__all__'
+
+
+class UserSubscriptionSerializer(serializers.ModelSerializer):
+    """Сериализатор подписок пользователя."""
+    class Meta:
+        model = UserSubscription
         fields = '__all__'
