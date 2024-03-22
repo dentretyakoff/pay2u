@@ -30,5 +30,7 @@ module.exports = {
     "react/function-component-definition": "off",
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "object-curly-newline": "off",
   },
 };

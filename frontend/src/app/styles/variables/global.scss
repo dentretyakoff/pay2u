@@ -33,6 +33,17 @@
   --font-line-xl: 24px;
   --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
 
+  // xxl
+  --font-size-xxl: 32px;
+  --font-line-xxl: 36px;
+  --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
+
+  // font-weight
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
   // Sizes
 
   // z-indexes
