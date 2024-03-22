@@ -57,11 +57,11 @@ export const OnboardingDialog = memo((props: OnboardingDialogProps) => {
           <img src={CloseButton} alt="close button" />
         </button>
         <Swiper
-          style={{ width: "100%" }}
           navigation
           pagination
           modules={[Pagination, Navigation]}
           slidesPerView={1}
+          className="OnboardingDialogSlider"
         >
           <SwiperSlide className="dialogSlide">
             <img src={StoriesPic1} alt="party" className="dialogImg" />
