@@ -1,0 +1,107 @@
+.OnboarfingDialogWrapper {
+  margin-top: 24px;
+}
+
+.OnboardingDialogSlider {
+  width: 100%;
+}
+
+.swiper-pagination-bullet {
+  width: 116px !important;
+  height: 1px !important;
+  opacity: 0.6 !important;
+  border-radius: 0 !important;
+  background-color: var(--inverted-primary-color) !important;
+}
+
+.swiper-pagination-bullet-active {
+  height: 2px !important;
+  opacity: 1 !important;
+}
+
+.swiper-pagination-bullets {
+  bottom: 100% !important;
+  top: 40px !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  top: unset !important;
+  bottom: 3% !important;
+  color: var(--primary-color) !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0 !important;
+}
+
+.dialogSlide {
+  height: 100vh !important;
+  background: rgba(183, 7, 88, 1);
+  padding: 0 16px 0 16px;
+}
+
+.dialogButton {
+  font-size: var(--font-size-m);
+  color: var(--accent-color);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.dialogCloseButton {
+  border: none;
+  background: none;
+  position: absolute;
+  top: 17px;
+  right: 16px;
+  z-index: 11;
+}
+
+.dialogImg {
+  width: 100%;
+  margin-top: 145px;
+  margin-bottom: 74px;
+}
+
+.dialogTextList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.dialogTextListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.dialogTitle {
+  margin-bottom: 24px;
+  font-size: var(--font-size-xxl);
+  line-height: var(--font-line-xxl);
+  font-weight: var(--font-weight-bold);
+  color: var(--inverted-primary-color);
+}
+
+.dialogSlide:nth-child(2) .dialogTitle {
+  margin-top: 168px;
+}
+
+.dialogText {
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-regular);
+  color: var(--inverted-primary-color);
+  line-height: 28px;
+}
+
+.dialogBackButton {
+  width: 100%;
+  height: 48px;
+  background: var(--inverted-primary-color);
+  color: var(--accent-color);
+  border: none;
+  border-radius: 12px;
+  font-size: var(--font-size-m);
+  margin-top: 56px;
+}
