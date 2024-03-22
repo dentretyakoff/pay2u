@@ -1,4 +1,6 @@
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, status
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from api.serializers import (CategorySerializer,
                              ServiceSerializer,
@@ -36,8 +38,21 @@ class SubscriptionListRetrieveViewSet(mixins.ListModelMixin,
     serializer_class = SubscriptionSerializer
     filter_backends = (SubscriptionFilter,)
 
+    @action(detail=True, methods=('post',))
+    def subscribe(self, request, pk=None):
+        subscription = self.get_object()
+        user = request.user
+        serializer = SubscriptionSerializer(instance=subscription)
+        if user.my_subscriptions.filter(subscription=subscription).exists():
+            return Response({'error': 'Уже в подписках.'},
+                            status=status.HTTP_400_BAD_REQUEST)
+        subscription.subscribers.create(user=user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-class UserSubscriptionViewSet(viewsets.ModelViewSet):
+
+class UserSubscriptionViewSet(mixins.ListModelMixin,
+                              mixins.RetrieveModelMixin,
+                              viewsets.GenericViewSet):
     """Получает подписки пользователя."""
     queryset = UserSubscription.objects.all()
     serializer_class = UserSubscriptionSerializer
@@ -45,3 +60,12 @@ class UserSubscriptionViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         return UserSubscription.objects.filter(user=user)
+
+    @action(detail=True, methods=('post', 'delete'))
+    def renewal(self, request, pk=None):
+        user_subscription = self.get_object()
+        renewal_status = {'POST': True, 'DELETE': False}
+        user_subscription.renewal_status = renewal_status[request.method]
+        user_subscription.save()
+        serializer = UserSubscriptionSerializer(instance=user_subscription)
+        return Response(serializer.data, status=status.HTTP_200_OK)

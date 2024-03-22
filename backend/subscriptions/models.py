@@ -38,22 +38,22 @@ class Subscription(models.Model):
 
 
 class Favorite(models.Model):
-    """Избранные подписки пользователя."""
+    """Избранные сервисы пользователей."""
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='favorites',
         verbose_name='Пользователь')
-    subscription = models.ForeignKey(
-        Subscription,
+    service = models.ForeignKey(
+        Service,
         on_delete=models.CASCADE,
         related_name='favorites',
-        verbose_name='Подписка')
+        verbose_name='Сервис')
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=('user', 'subscription'),
-                                    name='unique_user_subscription')
+            models.UniqueConstraint(fields=('user', 'service'),
+                                    name='unique_user_service')
         ]
 
 
@@ -61,8 +61,8 @@ class UserSubscription(models.Model):
     """Подписки пользователя."""
     start_date = models.DateField('Дата начала', default=timezone.now)
     end_date = models.DateField('Дата окончания')
-    status = models.BooleanField('Статус')
-    renewal_status = models.BooleanField('Статус автопродления')
+    status = models.BooleanField('Статус', default=True)
+    renewal_status = models.BooleanField('Статус автопродления', default=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
