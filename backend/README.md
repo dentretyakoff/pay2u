@@ -14,6 +14,10 @@ docker compose -f infra/docker-compose-local.yaml up -d --build
     ```
     poetry install
     ```
+- активировать окружение
+    ```
+    poetry shell
+    ```
 - запустить БД
     ```
     poetry run task onlydb
