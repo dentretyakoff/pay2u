@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.utils import timezone
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -28,6 +30,13 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     filter_backends = (ServiceSearch,)
+
+    @action(detail=False, methods=('get',))
+    def new(self, request):
+        date_delta = timezone.now() - timezone.timedelta(settings.DATE_DELTA)
+        services = self.get_queryset().filter(created__gt=date_delta)
+        serializer = self.get_serializer(services, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 class SubscriptionListRetrieveViewSet(mixins.ListModelMixin,

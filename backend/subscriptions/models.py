@@ -10,6 +10,7 @@ class Service(models.Model):
     description = models.TextField('Описание cервиса')
     color = models.CharField('Цвет', max_length=7)
     image = models.ImageField('Лого сервиса', upload_to='services/')
+    created = models.DateTimeField('Дата создания', default=timezone.now)
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
@@ -59,8 +60,8 @@ class Favorite(models.Model):
 
 class UserSubscription(models.Model):
     """Подписки пользователя."""
-    start_date = models.DateField('Дата начала', default=timezone.now)
-    end_date = models.DateField('Дата окончания')
+    start_date = models.DateTimeField('Дата начала', default=timezone.now)
+    end_date = models.DateTimeField('Дата окончания')
     status = models.BooleanField('Статус', default=True)
     renewal_status = models.BooleanField('Статус автопродления', default=True)
     user = models.ForeignKey(
@@ -89,8 +90,8 @@ class PromoCode(models.Model):
     """Промокоды сервисов для активации подписок
     на устройствах пользователей."""
     code = models.CharField('Промокод', max_length=20)
-    start_date = models.DateField('Дата создания', default=timezone.now)
-    end_date = models.DateField('Дата истечения')
+    start_date = models.DateTimeField('Дата создания', default=timezone.now)
+    end_date = models.DateTimeField('Дата истечения')
     usage_status = models.BooleanField('Статус использования', default=False)
     subscription = models.ForeignKey(
         Subscription,

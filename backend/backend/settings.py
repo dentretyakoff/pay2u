@@ -155,3 +155,6 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ]
 }
+
+# Дельта в днях для получения новых сервисов
+DATE_DELTA = 30
