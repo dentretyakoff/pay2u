@@ -5,8 +5,11 @@ class ServiceSearch(filters.BaseFilterBackend):
     """Поиск по сервисам."""
     def filter_queryset(self, request, queryset, view):
         service = request.query_params.get('name')
+        category_id = request.query_params.get('category_id')
         if service:
             queryset = queryset.filter(name__istartswith=service)
+        if category_id:
+            queryset = queryset.filter(category=category_id)
         return queryset
 
 
