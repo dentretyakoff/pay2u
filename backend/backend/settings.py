@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
-from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -48,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'djoser',
+    'rest_framework.authtoken',
     'django_filters',
     'api.apps.ApiConfig',
     'subscriptions.apps.SubscriptionsConfig',
@@ -153,11 +152,6 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ],
-}
-
-SIMPLE_JWT = {
-   'ACCESS_TOKEN_LIFETIME': timedelta(days=999),
-   'AUTH_HEADER_TYPES': ('Bearer',),
+        'rest_framework.authentication.TokenAuthentication',
+    ]
 }
