@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.db.models import F
-from django.db.models import F
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
