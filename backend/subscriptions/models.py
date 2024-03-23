@@ -1,3 +1,4 @@
+from dateutil.relativedelta import relativedelta
 from django.db import models
 from django.utils import timezone
 
@@ -30,7 +31,7 @@ class Subscription(models.Model):
     name = models.CharField('Подписка', max_length=200)
     description = models.TextField('Описание подписки')
     price = models.IntegerField('Стоимость')
-    duration = models.DurationField('Период действия')
+    months = models.IntegerField('Период действия в месяцах')
     service = models.ForeignKey(
         Service,
         on_delete=models.CASCADE,
@@ -82,7 +83,8 @@ class UserSubscription(models.Model):
         возможно этот метод стоит убрать.
         """
         if not self.end_date:
-            self.end_date = self.start_date + self.subscription.duration
+            self.end_date = self.start_date + relativedelta(
+                month=self.subscription.months)
         super().save(*args, **kwargs)
 
 

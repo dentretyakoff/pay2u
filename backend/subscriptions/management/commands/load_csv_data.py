@@ -1,6 +1,5 @@
 import csv
 import os
-from datetime import timedelta
 
 from django.core.files import File
 from django.core.management import BaseCommand
@@ -59,7 +58,7 @@ class Command(BaseCommand):
                         name=row[0],
                         description=row[1],
                         price=int(row[2]),
-                        duration=timedelta(int(row[3])),
+                        months=int(row[3]),
                         service=service)
             self.stdout.write(self.style.SUCCESS('Подписки загружены.'))
         except Exception as e:
