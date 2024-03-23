@@ -6,6 +6,7 @@ from rest_framework.response import Response
 
 from api.serializers import (CategorySerializer,
                              ServiceSerializer,
+                             ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
                              SubscriptionSerializer)
 from .filters import ServiceSearch, SubscriptionFilter
@@ -30,6 +31,11 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
     filter_backends = (ServiceSearch,)
+
+    def retrieve(self, request, *args, **kwargs):
+        self.queryset = Service.objects.prefetch_related('subscriptions').all()
+        self.serializer_class = ServiceRetrieveSerializer
+        return super().retrieve(request, *args, **kwargs)
 
     @action(detail=False, methods=('get',))
     def new(self, request):

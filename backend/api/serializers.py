@@ -18,6 +18,13 @@ class CategorySerializer(serializers.ModelSerializer):
         return obj.services.count()
 
 
+class SubscriptionSerializer(serializers.ModelSerializer):
+    """Сериализатор подписок."""
+    class Meta:
+        model = Subscription
+        fields = '__all__'
+
+
 class ServiceSerializer(serializers.ModelSerializer):
     """Сериализатор сервисов."""
     class Meta:
@@ -25,11 +32,9 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class SubscriptionSerializer(serializers.ModelSerializer):
-    """Сериализатор подписок."""
-    class Meta:
-        model = Subscription
-        fields = '__all__'
+class ServiceRetrieveSerializer(ServiceSerializer):
+    """Сериализатор конкретного сервиса со вложенными подписками."""
+    subscriptions = SubscriptionSerializer(many=True)
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
