@@ -1,6 +1,6 @@
 import { memo, useCallback } from "react";
 import { Route, RouteProps, Routes } from "react-router-dom";
-import { routerConfig } from "../../../shared/config/routerConfig/routerConfig";
+import { routerConfig } from "shared/config/routerConfig/routerConfig";
 
 const AppRouter = () => {
   const renderWithWrapper = useCallback((route: RouteProps) => {

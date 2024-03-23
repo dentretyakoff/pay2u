@@ -18,8 +18,20 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    "baseUrl": "src",
+    "paths": {
+      "components/*": ["components/*"],
+      "pages/*": ["pages/*"],
+      "store/*": ["store/*"],
+      "shared/*": ["shared/*"],
+      "widgets/*": ["widgets/*"],
+      "models/*": ["models/*"],
+      "app/*": ["app/*"],
+      "providers/*": ["providers/*"]
+    }
   },
-  "include": [".eslintrc.cjs", "src"],
+  "include": [".eslintrc.cjs", "vite.config.ts", "src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
