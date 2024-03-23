@@ -33,8 +33,17 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
 
     @action(detail=False, methods=('get',))
     def new(self, request):
+        """Список новых сервисов."""
         date_delta = timezone.now() - timezone.timedelta(settings.DATE_DELTA)
         services = self.get_queryset().filter(created__gt=date_delta)
+        serializer = self.get_serializer(services, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=('get',))
+    def favorites(self, request):
+        """Список избранных сервисов пользователя."""
+        favorites = self.request.user.favorites.all()
+        services = Service.objects.filter(favorites__in=favorites)
         serializer = self.get_serializer(services, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -67,8 +76,7 @@ class UserSubscriptionViewSet(mixins.ListModelMixin,
     serializer_class = UserSubscriptionSerializer
 
     def get_queryset(self):
-        user = self.request.user
-        return UserSubscription.objects.filter(user=user)
+        return self.request.user.my_subscriptions.all()
 
     @action(detail=True, methods=('post', 'delete'))
     def renewal(self, request, pk=None):
