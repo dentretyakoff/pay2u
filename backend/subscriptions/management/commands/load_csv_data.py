@@ -23,12 +23,13 @@ class Command(BaseCommand):
             with open(category_data, encoding='utf-8') as csv_file:
                 reader = csv.reader(csv_file)
                 for row in reader:
-                    category, _ = Category.objects.get_or_create(
+                    category, created = Category.objects.get_or_create(
                         name=row[0], description=row[1],)
                     image_path = data_dir.joinpath('categories_img', row[2])
-                    with open(image_path, 'rb') as img:
-                        category.image.save(os.path.basename(image_path),
-                                            File(img), save=True)
+                    if created:
+                        with open(image_path, 'rb') as img:
+                            category.image.save(os.path.basename(image_path),
+                                                File(img), save=True)
             self.stdout.write(self.style.SUCCESS(
                 'Категории загружены загружены.'))
 
@@ -37,15 +38,16 @@ class Command(BaseCommand):
                 reader = csv.reader(csv_file)
                 for row in reader:
                     category = Category.objects.get(id=int(row[4]))
-                    service, _ = Service.objects.get_or_create(
+                    service, created = Service.objects.get_or_create(
                         name=row[0],
                         description=row[1],
                         color=row[2],
                         category=category)
-                    image_path = data_dir.joinpath('services_img', row[3])
-                    with open(image_path, 'rb') as img:
-                        service.image.save(os.path.basename(image_path),
-                                           File(img), save=True)
+                    if created:
+                        image_path = data_dir.joinpath('services_img', row[3])
+                        with open(image_path, 'rb') as img:
+                            service.image.save(os.path.basename(image_path),
+                                               File(img), save=True)
             self.stdout.write(self.style.SUCCESS('Сервисы загружены.'))
 
             # Загрузка подписок
