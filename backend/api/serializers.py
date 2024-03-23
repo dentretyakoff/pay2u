@@ -39,6 +39,14 @@ class ServiceRetrieveSerializer(ServiceSerializer):
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписок пользователя."""
+    service_name = serializers.CharField()
+    subscription_name = serializers.SlugRelatedField(slug_field='name',
+                                                     source='subscription',
+                                                     read_only=True)
+    subscription_price = serializers.SlugRelatedField(slug_field='price',
+                                                      source='subscription',
+                                                      read_only=True)
+
     class Meta:
         model = UserSubscription
         fields = '__all__'
