@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.db.models import F
+from django.db.models import F, Count
 from django.db import IntegrityError
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
@@ -24,7 +24,9 @@ class CategoryListRetrieveViewSet(mixins.ListModelMixin,
                                   mixins.RetrieveModelMixin,
                                   viewsets.GenericViewSet):
     """Получает категории списком или по одной."""
-    queryset = Category.objects.all()
+    queryset = (Category.objects.all()
+                .annotate(services_count=Count('services'))
+                .order_by('-services_count'))
     serializer_class = CategorySerializer
 
 

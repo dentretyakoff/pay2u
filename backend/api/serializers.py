@@ -8,14 +8,11 @@ from subscriptions.models import (Category,
 
 class CategorySerializer(serializers.ModelSerializer):
     """Сериализатор категорий."""
-    services_count = serializers.SerializerMethodField()
+    services_count = serializers.IntegerField()
 
     class Meta:
         model = Category
         fields = '__all__'
-
-    def get_services_count(self, category: Category) -> int:
-        return category.services.count()
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
