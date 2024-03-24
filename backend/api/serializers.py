@@ -8,14 +8,11 @@ from subscriptions.models import (Category,
 
 class CategorySerializer(serializers.ModelSerializer):
     """Сериализатор категорий."""
-    services_count = serializers.SerializerMethodField()
+    services_count = serializers.IntegerField()
 
     class Meta:
         model = Category
         fields = '__all__'
-
-    def get_services_count(self, obj):
-        return obj.services.count()
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
@@ -35,6 +32,11 @@ class ServiceSerializer(serializers.ModelSerializer):
 class ServiceRetrieveSerializer(ServiceSerializer):
     """Сериализатор конкретного сервиса со вложенными подписками."""
     subscriptions = SubscriptionSerializer(many=True)
+    is_favorited = serializers.SerializerMethodField()
+
+    def get_is_favorited(self, service: Service) -> bool:
+        user = self.context['request'].user
+        return user.favorites.filter(service=service).exists()
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
