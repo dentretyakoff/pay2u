@@ -12,7 +12,7 @@ from api.serializers import (CategorySerializer,
                              ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
                              SubscriptionSerializer)
-from .filters import ServiceSearch, SubscriptionFilter, UserSubscriptionFilter
+from .filters import ServiceSearch, UserSubscriptionFilter
 from subscriptions.models import (Category,
                                   Favorite,
                                   Service,
@@ -78,13 +78,11 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
             return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class SubscriptionListRetrieveViewSet(mixins.ListModelMixin,
-                                      mixins.RetrieveModelMixin,
+class SubscriptionListRetrieveViewSet(mixins.RetrieveModelMixin,
                                       viewsets.GenericViewSet):
     """Получает варианты подписок или данные о конкретной подписке."""
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
-    filter_backends = (SubscriptionFilter,)
 
     @action(detail=True, methods=('post',))
     def subscribe(self, request, pk=None):
