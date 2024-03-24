@@ -14,8 +14,8 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
-    def get_services_count(self, obj):
-        return obj.services.count()
+    def get_services_count(self, category: Category) -> int:
+        return category.services.count()
 
 
 class SubscriptionSerializer(serializers.ModelSerializer):
@@ -35,6 +35,11 @@ class ServiceSerializer(serializers.ModelSerializer):
 class ServiceRetrieveSerializer(ServiceSerializer):
     """Сериализатор конкретного сервиса со вложенными подписками."""
     subscriptions = SubscriptionSerializer(many=True)
+    is_favorited = serializers.SerializerMethodField()
+
+    def get_is_favorited(self, service: Service) -> bool:
+        user = self.context['request'].user
+        return user.favorites.filter(service=service).exists()
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):

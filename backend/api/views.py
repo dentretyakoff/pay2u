@@ -1,5 +1,7 @@
 from django.conf import settings
 from django.db.models import F
+from django.db import IntegrityError
+from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
@@ -12,6 +14,7 @@ from api.serializers import (CategorySerializer,
                              SubscriptionSerializer)
 from .filters import ServiceSearch, SubscriptionFilter, UserSubscriptionFilter
 from subscriptions.models import (Category,
+                                  Favorite,
                                   Service,
                                   UserSubscription,
                                   Subscription)
@@ -53,6 +56,24 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
         services = Service.objects.filter(favorites__in=favorites)
         serializer = self.get_serializer(services, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=('post', 'delete'))
+    def favorite(self, request, pk=None):
+        """Добавить/удалить сервис в избранном пользователя."""
+        service = self.get_object()
+        if request.method == 'POST':
+            try:
+                service.favorites.create(user=request.user)
+                return Response(status=status.HTTP_201_CREATED)
+            except IntegrityError:
+                return Response(
+                    {'error': 'Уже в избранном'},
+                    status=status.HTTP_400_BAD_REQUEST)
+        if request.method == 'DELETE':
+            favorite = get_object_or_404(
+                Favorite, service=service, user=request.user)
+            favorite.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class SubscriptionListRetrieveViewSet(mixins.ListModelMixin,
