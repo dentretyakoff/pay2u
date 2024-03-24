@@ -1,7 +1,7 @@
 from django.conf import settings
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import F
 from django.db import IntegrityError
+from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
@@ -14,6 +14,7 @@ from api.serializers import (CategorySerializer,
                              SubscriptionSerializer)
 from .filters import ServiceSearch, SubscriptionFilter, UserSubscriptionFilter
 from subscriptions.models import (Category,
+                                  Favorite,
                                   Service,
                                   UserSubscription,
                                   Subscription)
@@ -69,12 +70,10 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
                     {'error': 'Уже в избранном'},
                     status=status.HTTP_400_BAD_REQUEST)
         if request.method == 'DELETE':
-            try:
-                favorite = service.favorites.get(user=request.user)
-                favorite.delete()
-                return Response(status=status.HTTP_204_NO_CONTENT)
-            except ObjectDoesNotExist:
-                return Response(status=status.HTTP_404_NOT_FOUND)
+            favorite = get_object_or_404(
+                Favorite, service=service, user=request.user)
+            favorite.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class SubscriptionListRetrieveViewSet(mixins.ListModelMixin,
