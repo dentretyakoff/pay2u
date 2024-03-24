@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.db.models import F
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
@@ -79,9 +78,9 @@ class UserSubscriptionViewSet(mixins.ListModelMixin,
                               mixins.RetrieveModelMixin,
                               viewsets.GenericViewSet):
     """Получает подписки пользователя."""
-    queryset = UserSubscription.objects.select_related('subscription')\
-        .annotate(service_name=F('subscription__service__name'))\
-        .order_by('end_date').all()
+    queryset = (UserSubscription.objects
+                .select_related('subscription__service')
+                .order_by('end_date').all())
     serializer_class = UserSubscriptionSerializer
     filter_backends = (UserSubscriptionFilter,)
 
