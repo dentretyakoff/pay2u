@@ -20,3 +20,15 @@ class SubscriptionFilter(filters.BaseFilterBackend):
         if service_id:
             queryset = queryset.filter(service=service_id)
         return queryset
+
+
+class UserSubscriptionFilter(filters.BaseFilterBackend):
+    """Фильтр подписок пользователя.
+    По умолчанию возвращает только активные подписки.
+    Завершённые подписки можно получить с параметром status=False.
+    """
+    def filter_queryset(self, request, queryset, view):
+        status = request.query_params.get('status')
+        if status in (0, "f", "F", "False", "false"):
+            return queryset.filter(status=False)
+        return queryset.filter(status=True)
