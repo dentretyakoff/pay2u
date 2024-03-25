@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 from django.core.files import File
 from django.core.management import BaseCommand
@@ -45,6 +46,7 @@ class Command(BaseCommand):
                         description=service_data['description'],
                         color=service_data['color'],
                         rating=service_data['rating'],
+                        created=datetime.fromisoformat(service_data['created']),  # noqa
                         category=category)
                     if created:
                         image_path = data_dir.joinpath(

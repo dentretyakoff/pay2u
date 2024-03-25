@@ -5,7 +5,8 @@
       "color": "#f30745",
       "logo": "ivi.png",
       "category_id": 1,
-      "rating": 10
+      "rating": 10,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "Яндекс Плюс",
@@ -13,7 +14,8 @@
       "color": "#8f4bcb",
       "logo": "yandexplus.png",
       "category_id": 5,
-      "rating": 9
+      "rating": 9,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "Окко",
@@ -21,7 +23,8 @@
       "color": "#000000",
       "logo": "okko.png",
       "category_id": 1,
-      "rating": 8
+      "rating": 8,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "MEGOGO",
@@ -29,7 +32,8 @@
       "color": "#22c3b1",
       "logo": "megogo.png",
       "category_id": 1,
-      "rating": 7
+      "rating": 7,
+      "created": "2024-03-24T08:00:00+07:00"
     },
     {
       "name": "Доктор Рядом",
@@ -37,7 +41,8 @@
       "color": "#458c27",
       "logo": "doctornear.png",
       "category_id": 8,
-      "rating": 6
+      "rating": 6,
+      "created": "2024-03-24T08:00:00+07:00"
     },
     {
       "name": "ЛитРес",
@@ -45,7 +50,8 @@
       "color": "#ff5006",
       "logo": "litress.png",
       "category_id": 2,
-      "rating": 5
+      "rating": 5,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "MyBook",
@@ -53,7 +59,8 @@
       "color": "#ffb83e",
       "logo": "mybook.png",
       "category_id": 2,
-      "rating": 4
+      "rating": 4,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "Spotify",
@@ -61,7 +68,8 @@
       "color": "#1ed561",
       "logo": "spotify.png",
       "category_id": 3,
-      "rating": 3
+      "rating": 3,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "Storytel",
@@ -69,7 +77,8 @@
       "color": "#ec6607",
       "logo": "storytel.png",
       "category_id": 2,
-      "rating": 2
+      "rating": 2,
+      "created": "2024-01-01T08:00:00+07:00"
     },
     {
       "name": "Zoom Class",
@@ -77,7 +86,8 @@
       "color": "#0085cd",
       "logo": "zoomclass.png",
       "category_id": 4,
-      "rating": 1
+      "rating": 1,
+      "created": "2024-03-24T08:00:00+07:00"
     }
   ]
   
