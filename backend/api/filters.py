@@ -20,6 +20,6 @@ class UserSubscriptionFilter(filters.BaseFilterBackend):
     """
     def filter_queryset(self, request, queryset, view):
         status = request.query_params.get('status')
-        if status in (0, "f", "F", "False", "false"):
-            return queryset.filter(status=False)
-        return queryset.filter(status=True)
+        if status in (0, "f", "F", "false", "False"):
+            return queryset.filter(user=request.user, status=False)
+        return queryset.filter(user=request.user, status=True)
