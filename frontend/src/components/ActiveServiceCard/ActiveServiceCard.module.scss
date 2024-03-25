@@ -2,9 +2,10 @@
   display: block;
   width: 183px;
   color: var(--primary-color);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 12px;
+  margin: 0 4px 4px 3px;
 }
 
 .innerContainer {
@@ -16,9 +17,6 @@
 .logo {
   width: 40px;
   height: 40px;
-}
-
-.priceContainer {
 }
 
 .price {
