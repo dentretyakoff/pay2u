@@ -41,7 +41,8 @@ class Command(BaseCommand):
                         amount=user_subscription.subscription.price,
                         date=user_subscription.start_date,
                         user=user,
-                        user_subscription=user_subscription)
+                        user_subscription=user_subscription,
+                        cashback_status=payment_data['cashback_status'])
             self.stdout.write(self.style.SUCCESS(
                 'Оплаты загружены загружены.'))
         except Exception as e:
