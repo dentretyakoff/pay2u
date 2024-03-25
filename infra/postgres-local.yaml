@@ -1,0 +1,16 @@
+version: '3.8'
+
+volumes:
+  pg_data_pay2u:
+
+services:
+  postgres-local:
+    image: postgres:13.3-alpine
+    container_name: postgres-local
+    restart: always
+    volumes:
+      - pg_data_pay2u:/var/lib/postgresql/data/
+    ports:
+      - '5432:5432'
+    env_file:
+      - ../.env
