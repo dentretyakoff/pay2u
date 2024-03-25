@@ -24,6 +24,8 @@ class SubscriptionSerializer(serializers.ModelSerializer):
 
 class ServiceSerializer(serializers.ModelSerializer):
     """Сериализатор сервисов."""
+    cashback = serializers.IntegerField()
+
     class Meta:
         model = Service
         fields = '__all__'

@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import IntegrityError
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
@@ -24,9 +24,9 @@ class CategoryListRetrieveViewSet(mixins.ListModelMixin,
                                   mixins.RetrieveModelMixin,
                                   viewsets.GenericViewSet):
     """Получает категории списком или по одной."""
-    queryset = (Category.objects.all()
+    queryset = (Category.objects
                 .annotate(services_count=Count('services'))
-                .order_by('-services_count'))
+                .order_by('-services_count').all())
     serializer_class = CategorySerializer
 
 
@@ -34,7 +34,9 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
                                  mixins.RetrieveModelMixin,
                                  viewsets.GenericViewSet):
     """Получает сервисы списком или по одному."""
-    queryset = Service.objects.all()
+    queryset = (Service.objects
+                .annotate(cashback=Max('subscriptions__cashback'))
+                .order_by('-rating').all())
     serializer_class = ServiceSerializer
     filter_backends = (ServiceSearch,)
 
