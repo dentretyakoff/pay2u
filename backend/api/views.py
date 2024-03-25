@@ -11,8 +11,11 @@ from api.serializers import (CategorySerializer,
                              ServiceSerializer,
                              ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
-                             SubscriptionSerializer)
+                             SubscriptionSerializer,
+                             PaymentSerializer,
+                             ExpensesSerializer)
 from .filters import ServiceSearch, UserSubscriptionFilter
+from payments.models import Payment
 from subscriptions.models import (Category,
                                   Favorite,
                                   Service,
@@ -115,4 +118,21 @@ class UserSubscriptionViewSet(mixins.ListModelMixin,
         user_subscription.renewal_status = renewal_status[request.method]
         user_subscription.save()
         serializer = UserSubscriptionSerializer(instance=user_subscription)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PaymentListViewSet(mixins.ListModelMixin,
+                         viewsets.GenericViewSet):
+    """Получает чеки пользователя."""
+    queryset = (Payment.objects
+                .select_related('user_subscription__subscription__service')
+                .all())
+    serializer_class = PaymentSerializer
+
+    def get_queryset(self):
+        return self.request.user.my_payments.all()
+
+    @action(detail=False, methods=('get',))
+    def expenses(self, request):
+        serializer = ExpensesSerializer(self.get_queryset())
         return Response(serializer.data, status=status.HTTP_200_OK)
