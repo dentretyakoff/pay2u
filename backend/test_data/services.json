@@ -1,0 +1,83 @@
+[
+    {
+      "name": "Иви",
+      "description": "Описание Иви",
+      "color": "#f30745",
+      "logo": "ivi.png",
+      "category_id": 1,
+      "rating": 10
+    },
+    {
+      "name": "Яндекс Плюс",
+      "description": "Описание Яндекс Плюс",
+      "color": "#8f4bcb",
+      "logo": "yandexplus.png",
+      "category_id": 5,
+      "rating": 9
+    },
+    {
+      "name": "Окко",
+      "description": "Описание Окко",
+      "color": "#000000",
+      "logo": "okko.png",
+      "category_id": 1,
+      "rating": 8
+    },
+    {
+      "name": "MEGOGO",
+      "description": "Описание MEGOGO",
+      "color": "#22c3b1",
+      "logo": "megogo.png",
+      "category_id": 1,
+      "rating": 7
+    },
+    {
+      "name": "Доктор Рядом",
+      "description": "Описание Доктор Рядом",
+      "color": "#458c27",
+      "logo": "doctornear.png",
+      "category_id": 8,
+      "rating": 6
+    },
+    {
+      "name": "ЛитРес",
+      "description": "Описание ЛитРес",
+      "color": "#ff5006",
+      "logo": "litress.png",
+      "category_id": 2,
+      "rating": 5
+    },
+    {
+      "name": "MyBook",
+      "description": "Описание MyBook",
+      "color": "#ffb83e",
+      "logo": "mybook.png",
+      "category_id": 2,
+      "rating": 4
+    },
+    {
+      "name": "Spotify",
+      "description": "Описание Spotify",
+      "color": "#1ed561",
+      "logo": "spotify.png",
+      "category_id": 3,
+      "rating": 3
+    },
+    {
+      "name": "Storytel",
+      "description": "Описание Storytel",
+      "color": "#ec6607",
+      "logo": "storytel.png",
+      "category_id": 2,
+      "rating": 2
+    },
+    {
+      "name": "Zoom Class",
+      "description": "Описание Zoom Class",
+      "color": "#0085cd",
+      "logo": "zoomclass.png",
+      "category_id": 4,
+      "rating": 1
+    }
+  ]
+  

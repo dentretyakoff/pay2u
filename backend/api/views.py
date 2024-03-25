@@ -78,9 +78,9 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
             return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class SubscriptionListRetrieveViewSet(mixins.RetrieveModelMixin,
-                                      viewsets.GenericViewSet):
-    """Получает варианты подписок или данные о конкретной подписке."""
+class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
+                                  viewsets.GenericViewSet):
+    """Получает данные о конкретной подписке."""
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
 

@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'django_filters',
     'api.apps.ApiConfig',
     'subscriptions.apps.SubscriptionsConfig',
-    'users.apps.UsersConfig'
-
+    'users.apps.UsersConfig',
+    'payments.apps.PaymentsConfig',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +158,7 @@ REST_FRAMEWORK = {
 
 # Дельта в днях для получения новых сервисов
 DATE_DELTA = 30
+MIN_CASHBACK = 1
+MAX_CASHBACK = 100
+MIN_RATING = 0
+MAX_RATING = 10
