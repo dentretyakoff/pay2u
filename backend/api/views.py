@@ -12,6 +12,7 @@ from api.serializers import (CategorySerializer,
                              ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
                              SubscriptionSerializer)
+from .openapi import service_schema, user_subscription_schema
 from .filters import ServiceSearch, UserSubscriptionFilter
 from subscriptions.models import (Category,
                                   Favorite,
@@ -30,6 +31,7 @@ class CategoryListRetrieveViewSet(mixins.ListModelMixin,
     serializer_class = CategorySerializer
 
 
+@service_schema
 class ServiceListRetrieveViewSet(mixins.ListModelMixin,
                                  mixins.RetrieveModelMixin,
                                  viewsets.GenericViewSet):
@@ -96,6 +98,7 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@user_subscription_schema
 class UserSubscriptionViewSet(mixins.ListModelMixin,
                               mixins.RetrieveModelMixin,
                               viewsets.GenericViewSet):
