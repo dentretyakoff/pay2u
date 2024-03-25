@@ -1,3 +1,6 @@
+from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -10,11 +13,20 @@ class Service(models.Model):
     description = models.TextField('Описание cервиса')
     color = models.CharField('Цвет', max_length=7)
     image = models.ImageField('Лого сервиса', upload_to='services/')
+    created = models.DateTimeField('Дата создания', default=timezone.now)
+    rating = models.PositiveIntegerField(
+        'Рейтинг сервиса',
+        default=settings.MIN_RATING,
+        validators=[MinValueValidator(settings.MIN_RATING),
+                    MaxValueValidator(settings.MAX_RATING)])
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
         related_name='services',
         verbose_name='Категория')
+
+    class Meta:
+        ordering = ['-rating']
 
 
 class Category(models.Model):
@@ -28,8 +40,13 @@ class Subscription(models.Model):
     """Вариант подписки на сервис."""
     name = models.CharField('Подписка', max_length=200)
     description = models.TextField('Описание подписки')
-    price = models.IntegerField('Стоимость')
-    duration = models.DurationField('Период действия')
+    price = models.PositiveIntegerField('Стоимость')
+    months = models.IntegerField('Период действия в месяцах')
+    cashback = models.PositiveIntegerField(
+        'Кешбэк подписки',
+        default=settings.MIN_CASHBACK,
+        validators=[MinValueValidator(settings.MIN_CASHBACK),
+                    MaxValueValidator(settings.MAX_CASHBACK)])
     service = models.ForeignKey(
         Service,
         on_delete=models.CASCADE,
@@ -38,31 +55,31 @@ class Subscription(models.Model):
 
 
 class Favorite(models.Model):
-    """Избранные подписки пользователя."""
+    """Избранные сервисы пользователей."""
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='favorites',
         verbose_name='Пользователь')
-    subscription = models.ForeignKey(
-        Subscription,
+    service = models.ForeignKey(
+        Service,
         on_delete=models.CASCADE,
         related_name='favorites',
-        verbose_name='Подписка')
+        verbose_name='Сервис')
 
     class Meta:
         constraints = [
-            models.UniqueConstraint(fields=('user', 'subscription'),
-                                    name='unique_user_subscription')
+            models.UniqueConstraint(fields=('user', 'service'),
+                                    name='unique_user_service')
         ]
 
 
 class UserSubscription(models.Model):
     """Подписки пользователя."""
-    start_date = models.DateField('Дата начала', default=timezone.now)
-    end_date = models.DateField('Дата окончания')
-    status = models.BooleanField('Статус')
-    renewal_status = models.BooleanField('Статус автопродления')
+    start_date = models.DateTimeField('Дата начала', default=timezone.now)
+    end_date = models.DateTimeField('Дата окончания')
+    status = models.BooleanField('Статус', default=True)
+    renewal_status = models.BooleanField('Статус автопродления', default=True)
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
@@ -81,7 +98,8 @@ class UserSubscription(models.Model):
         возможно этот метод стоит убрать.
         """
         if not self.end_date:
-            self.end_date = self.start_date + self.subscription.duration
+            self.end_date = self.start_date + relativedelta(
+                month=self.subscription.months)
         super().save(*args, **kwargs)
 
 
@@ -89,8 +107,8 @@ class PromoCode(models.Model):
     """Промокоды сервисов для активации подписок
     на устройствах пользователей."""
     code = models.CharField('Промокод', max_length=20)
-    start_date = models.DateField('Дата создания', default=timezone.now)
-    end_date = models.DateField('Дата истечения')
+    start_date = models.DateTimeField('Дата создания', default=timezone.now)
+    end_date = models.DateTimeField('Дата истечения')
     usage_status = models.BooleanField('Статус использования', default=False)
     subscription = models.ForeignKey(
         Subscription,
