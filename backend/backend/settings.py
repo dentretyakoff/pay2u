@@ -158,3 +158,21 @@ REST_FRAMEWORK = {
 
 # Дельта в днях для получения новых сервисов
 DATE_DELTA = 30
+
+
+# Логгирование в консоль приложения, также выводит row-SQL запросы.
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     },
+# }

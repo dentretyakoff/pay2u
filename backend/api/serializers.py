@@ -41,7 +41,15 @@ class ServiceRetrieveSerializer(ServiceSerializer):
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписок пользователя."""
-    service_name = serializers.CharField()
+    service_name = serializers.SlugRelatedField(slug_field='name',
+                                                source='subscription.service',
+                                                read_only=True)
+    service_color = serializers.SlugRelatedField(slug_field='color',
+                                                 source='subscription.service',
+                                                 read_only=True)
+    service_image = serializers.SlugRelatedField(slug_field='image.url',
+                                                 source='subscription.service',
+                                                 read_only=True)
     subscription_name = serializers.SlugRelatedField(slug_field='name',
                                                      source='subscription',
                                                      read_only=True)
