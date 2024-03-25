@@ -1,6 +1,6 @@
 from django.conf import settings
-from django.db.models import F, Count
 from django.db import IntegrityError
+from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
@@ -100,9 +100,9 @@ class UserSubscriptionViewSet(mixins.ListModelMixin,
                               mixins.RetrieveModelMixin,
                               viewsets.GenericViewSet):
     """Получает подписки пользователя."""
-    queryset = UserSubscription.objects.select_related('subscription')\
-        .annotate(service_name=F('subscription__service__name'))\
-        .order_by('end_date').all()
+    queryset = (UserSubscription.objects
+                .select_related('subscription__service')
+                .order_by('end_date').all())
     serializer_class = UserSubscriptionSerializer
     filter_backends = (UserSubscriptionFilter,)
 

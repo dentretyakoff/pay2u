@@ -162,3 +162,20 @@ MIN_CASHBACK = 1
 MAX_CASHBACK = 100
 MIN_RATING = 0
 MAX_RATING = 10
+
+# Логгирование в консоль приложения, также выводит row-SQL запросы.
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#     },
+#     'loggers': {
+#         'django.db.backends': {
+#             'handlers': ['console'],
+#             'level': 'DEBUG',
+#         },
+#     },
+# }
