@@ -1,4 +1,6 @@
 from dateutil.relativedelta import relativedelta
+from django.conf import settings
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils import timezone
 
@@ -12,11 +14,19 @@ class Service(models.Model):
     color = models.CharField('Цвет', max_length=7)
     image = models.ImageField('Лого сервиса', upload_to='services/')
     created = models.DateTimeField('Дата создания', default=timezone.now)
+    rating = models.PositiveIntegerField(
+        'Рейтинг сервиса',
+        default=settings.MIN_RATING,
+        validators=[MinValueValidator(settings.MIN_RATING),
+                    MaxValueValidator(settings.MAX_RATING)])
     category = models.ForeignKey(
         'Category',
         on_delete=models.CASCADE,
         related_name='services',
         verbose_name='Категория')
+
+    class Meta:
+        ordering = ['-rating']
 
 
 class Category(models.Model):
@@ -30,8 +40,13 @@ class Subscription(models.Model):
     """Вариант подписки на сервис."""
     name = models.CharField('Подписка', max_length=200)
     description = models.TextField('Описание подписки')
-    price = models.IntegerField('Стоимость')
+    price = models.PositiveIntegerField('Стоимость')
     months = models.IntegerField('Период действия в месяцах')
+    cashback = models.PositiveIntegerField(
+        'Кешбэк подписки',
+        default=settings.MIN_CASHBACK,
+        validators=[MinValueValidator(settings.MIN_CASHBACK),
+                    MaxValueValidator(settings.MAX_CASHBACK)])
     service = models.ForeignKey(
         Service,
         on_delete=models.CASCADE,
