@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'subscriptions.apps.SubscriptionsConfig',
     'users.apps.UsersConfig',
     'payments.apps.PaymentsConfig',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
