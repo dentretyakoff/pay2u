@@ -14,6 +14,7 @@ export default defineConfig({
       models: "/src/models",
       app: "/src/app",
       providers: "/src/providers",
+      services: "/src/services",
     },
   },
 });

@@ -29,7 +29,8 @@
       "widgets/*": ["widgets/*"],
       "models/*": ["models/*"],
       "app/*": ["app/*"],
-      "providers/*": ["providers/*"]
+      "providers/*": ["providers/*"],
+      "services/*": ["services/*"]
     }
   },
   "include": [".eslintrc.cjs", "vite.config.ts", "src"],
