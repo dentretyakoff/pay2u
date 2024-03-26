@@ -1,5 +1,4 @@
 from datetime import date
-from django.db.models import Sum
 from rest_framework import serializers
 
 from payments.models import Payment
