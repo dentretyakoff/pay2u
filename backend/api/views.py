@@ -130,7 +130,7 @@ class PaymentListViewSet(mixins.ListModelMixin,
     serializer_class = PaymentSerializer
 
     def get_queryset(self):
-        return self.request.user.my_payments.all()
+        return super().get_queryset().filter(user=self.request.user)
 
     @action(detail=False, methods=('get',))
     def expenses(self, request):

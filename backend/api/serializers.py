@@ -90,15 +90,9 @@ class ExpensesSerializer(serializers.ModelSerializer):
 
     def get_total_cashback(self, payment: Payment) -> int:
         queryset = self.instance.filter(cashback_status=True)
-        total_cashback = (
-            queryset.aggregate(
-                total_cashback=Sum('cashback'))['total_cashback'])
-        return total_cashback or 0
+        return sum(payment.cashback for payment in queryset)
 
     def get_monthly_expenses(self, payment: Payment) -> int:
         year_month = f'{date.today().year}-{date.today().month:02}'
         queryset = self.instance.filter(date__startswith=year_month)
-        monthly_expenses = (
-            queryset.aggregate(
-                monthly_expenses=Sum('amount'))['monthly_expenses'])
-        return monthly_expenses or 0
+        return sum(payment.amount for payment in queryset)
