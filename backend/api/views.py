@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import IntegrityError
-from django.db.models import Count
+from django.db.models import Count, Max
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import mixins, viewsets, status
@@ -11,8 +11,12 @@ from api.serializers import (CategorySerializer,
                              ServiceSerializer,
                              ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
-                             SubscriptionSerializer)
+                             SubscriptionSerializer,
+                             PaymentSerializer,
+                             ExpensesSerializer)
+from .openapi import service_schema, user_subscription_schema
 from .filters import ServiceSearch, UserSubscriptionFilter
+from payments.models import Payment
 from subscriptions.models import (Category,
                                   Favorite,
                                   Service,
@@ -24,17 +28,20 @@ class CategoryListRetrieveViewSet(mixins.ListModelMixin,
                                   mixins.RetrieveModelMixin,
                                   viewsets.GenericViewSet):
     """Получает категории списком или по одной."""
-    queryset = (Category.objects.all()
+    queryset = (Category.objects
                 .annotate(services_count=Count('services'))
-                .order_by('-services_count'))
+                .order_by('-services_count').all())
     serializer_class = CategorySerializer
 
 
+@service_schema
 class ServiceListRetrieveViewSet(mixins.ListModelMixin,
                                  mixins.RetrieveModelMixin,
                                  viewsets.GenericViewSet):
     """Получает сервисы списком или по одному."""
-    queryset = Service.objects.all()
+    queryset = (Service.objects
+                .annotate(cashback=Max('subscriptions__cashback'))
+                .order_by('-rating').all())
     serializer_class = ServiceSerializer
     filter_backends = (ServiceSearch,)
 
@@ -96,6 +103,7 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@user_subscription_schema
 class UserSubscriptionViewSet(mixins.ListModelMixin,
                               mixins.RetrieveModelMixin,
                               viewsets.GenericViewSet):
@@ -113,4 +121,21 @@ class UserSubscriptionViewSet(mixins.ListModelMixin,
         user_subscription.renewal_status = renewal_status[request.method]
         user_subscription.save()
         serializer = UserSubscriptionSerializer(instance=user_subscription)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class PaymentListViewSet(mixins.ListModelMixin,
+                         viewsets.GenericViewSet):
+    """Получает чеки пользователя."""
+    queryset = (Payment.objects
+                .select_related('user_subscription__subscription__service')
+                .all())
+    serializer_class = PaymentSerializer
+
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
+
+    @action(detail=False, methods=('get',))
+    def expenses(self, request):
+        serializer = ExpensesSerializer(self.get_queryset())
         return Response(serializer.data, status=status.HTTP_200_OK)

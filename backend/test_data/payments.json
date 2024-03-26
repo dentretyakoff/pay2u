@@ -1,11 +1,14 @@
 [
     {
-        "user_subscription_id": 1
+        "user_subscription_id": 1,
+        "cashback_status": false
     },
     {
-        "user_subscription_id": 2
+        "user_subscription_id": 2,
+        "cashback_status": true
     },
     {
-        "user_subscription_id": 3
+        "user_subscription_id": 3,
+        "cashback_status": true
     }
 ]
