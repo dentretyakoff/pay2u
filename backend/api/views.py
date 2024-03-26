@@ -8,7 +8,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from api.serializers import (CategorySerializer,
-                             ServiceSerializer,
+                             ServiceListSerializer,
                              ServiceRetrieveSerializer,
                              UserSubscriptionSerializer,
                              SubscriptionSerializer,
@@ -24,9 +24,7 @@ from subscriptions.models import (Category,
                                   Subscription)
 
 
-class CategoryListRetrieveViewSet(mixins.ListModelMixin,
-                                  mixins.RetrieveModelMixin,
-                                  viewsets.GenericViewSet):
+class CategoryListRetrieveViewSet(viewsets.ReadOnlyModelViewSet):
     """Получает категории списком или по одной."""
     queryset = (Category.objects
                 .annotate(services_count=Count('services'))
@@ -35,18 +33,16 @@ class CategoryListRetrieveViewSet(mixins.ListModelMixin,
 
 
 @service_schema
-class ServiceListRetrieveViewSet(mixins.ListModelMixin,
-                                 mixins.RetrieveModelMixin,
-                                 viewsets.GenericViewSet):
+class ServiceListRetrieveViewSet(viewsets.ReadOnlyModelViewSet):
     """Получает сервисы списком или по одному."""
     queryset = (Service.objects
                 .annotate(cashback=Max('subscriptions__cashback'))
                 .order_by('-rating').all())
-    serializer_class = ServiceSerializer
+    serializer_class = ServiceListSerializer
     filter_backends = (ServiceSearch,)
 
     def retrieve(self, request, *args, **kwargs):
-        self.queryset = Service.objects.prefetch_related('subscriptions').all()
+        self.queryset = self.get_queryset().prefetch_related('subscriptions')
         self.serializer_class = ServiceRetrieveSerializer
         return super().retrieve(request, *args, **kwargs)
 
@@ -61,8 +57,7 @@ class ServiceListRetrieveViewSet(mixins.ListModelMixin,
     @action(detail=False, methods=('get',))
     def favorites(self, request):
         """Список избранных сервисов пользователя."""
-        favorites = self.request.user.favorites.all()
-        services = Service.objects.filter(favorites__in=favorites)
+        services = self.get_queryset().filter(favorites_user=self.request.user)
         serializer = self.get_serializer(services, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
@@ -104,9 +99,7 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
 
 
 @user_subscription_schema
-class UserSubscriptionViewSet(mixins.ListModelMixin,
-                              mixins.RetrieveModelMixin,
-                              viewsets.GenericViewSet):
+class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
     """Получает подписки пользователя."""
     queryset = (UserSubscription.objects
                 .select_related('subscription__service')
