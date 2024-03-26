@@ -25,9 +25,6 @@ class Service(models.Model):
         related_name='services',
         verbose_name='Категория')
 
-    class Meta:
-        ordering = ['-rating']
-
 
 class Category(models.Model):
     """Категория подписок."""
