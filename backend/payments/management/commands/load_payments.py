@@ -31,19 +31,15 @@ class Command(BaseCommand):
             self.stdout.write(self.style.SUCCESS(
                 'Подписки пользователя загружены.'))
 
-            # Загрузка оплат
+            # Изменение кешбэка
             with open(payments_data, encoding='utf-8') as json_file:
                 data = json.load(json_file)
                 for payment_data in data:
-                    user_subscription = UserSubscription.objects.get(
-                        pk=payment_data['user_subscription_id'])
-                    Payment.objects.get_or_create(
-                        amount=user_subscription.subscription.price,
-                        date=user_subscription.start_date,
-                        user=user,
-                        user_subscription=user_subscription,
-                        cashback_status=payment_data['cashback_status'])
+                    payment = Payment.objects.get(
+                        pk=payment_data['payment_id'])
+                    payment.cashback_status = payment_data['cashback_status']
+                    payment.save()
             self.stdout.write(self.style.SUCCESS(
-                'Оплаты загружены загружены.'))
+                'Статусы кешбэков изменены.'))
         except Exception as e:
             print(f'Ошибка загрузки оплат: {e}')
