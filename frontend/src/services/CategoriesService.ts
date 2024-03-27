@@ -7,15 +7,27 @@ export const categoriesAPI = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: BASE_URL,
     prepareHeaders: (headers) => {
-      headers.set("authorization", "9228db1e926465fd7e6dd5d7526dc072ad05132d");
+      const token = localStorage.getItem("token");
+      if (token) {
+        headers.set("authorization", `Bearer ${token}`);
+      }
       return headers;
-    }
+    },
   }),
   tagTypes: ["Categories"],
   endpoints: (builder) => ({
     getCategories: builder.query<ICategory[], void>({
       query: () => ({
         url: "/categories",
+        // mode: "",
+        // credentials: "include",
+        // headers: {
+        //   "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        //   "Access-Control-Allow-Credentials": true,
+        //   "Access-Control-Allow-Origin": "*",
+        //   "Content-Type": "application/json",
+        //   "X-Requested-With": "XMLHttpRequest",
+        // }
       }),
       providesTags: ["Categories"],
     }),

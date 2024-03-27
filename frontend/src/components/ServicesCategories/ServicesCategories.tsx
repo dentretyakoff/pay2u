@@ -8,7 +8,8 @@ import { useGetCategoriesQuery } from "services/CategoriesService";
 interface ServicesCategoriesProps {}
 
 export const ServicesCategories = memo(() => {
-  const { data: categories = [], error, isFetching } = useGetCategoriesQuery();
+  const { data: categories, error, isFetching } = useGetCategoriesQuery();
+  console.log(categories);
 
   const sllicedData = categories.slice(0, 7).concat(categories.slice(-1));
 
