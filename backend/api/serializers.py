@@ -19,9 +19,16 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписок."""
+    is_subscribe = serializers.SerializerMethodField()
+
     class Meta:
         model = Subscription
         fields = '__all__'
+
+    def get_is_subscribe(self, subscription: Subscription) -> bool:
+        user = self.context['request'].user
+        return user.my_subscriptions.filter(
+            subscription=subscription, status=True).exists()
 
 
 class ServiceListSerializer(serializers.ModelSerializer):
@@ -40,13 +47,13 @@ class ServiceRetrieveSerializer(serializers.ModelSerializer):
     subscriptions = SubscriptionSerializer(many=True)
     is_favorited = serializers.SerializerMethodField()
 
-    def get_is_favorited(self, service: Service) -> bool:
-        user = self.context['request'].user
-        return user.favorites.filter(service=service).exists()
-
     class Meta:
         model = Service
         fields = '__all__'
+
+    def get_is_favorited(self, service: Service) -> bool:
+        user = self.context['request'].user
+        return user.favorites.filter(service=service).exists()
 
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):

@@ -2,6 +2,8 @@ from dateutil.relativedelta import relativedelta
 from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 
 from users.models import User
@@ -88,6 +90,12 @@ class UserSubscription(models.Model):
         related_name='subscribers',
         verbose_name='Подписка')
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('user', 'subscription'),
+                                    name='unique_user_subscription')
+        ]
+
     def save(self, *args, **kwargs):
         """
         Вычисление даты окончания подписки.
@@ -98,6 +106,18 @@ class UserSubscription(models.Model):
             self.end_date = self.start_date + relativedelta(
                 month=self.subscription.months)
         super().save(*args, **kwargs)
+
+
+@receiver(post_save, sender=UserSubscription)
+def create_payment(sender, instance, created, **kwargs):
+    """
+    Создает платеж, после создания объекта UserSubscription или
+    при выставлении status=True когда пользователь возобновил подписку.
+    """
+    instance.user_payments.create(
+        amount=instance.subscription.price,
+        date=instance.start_date,
+        user=instance.user)
 
 
 class PromoCode(models.Model):
