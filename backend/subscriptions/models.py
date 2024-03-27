@@ -132,3 +132,16 @@ class PromoCode(models.Model):
         on_delete=models.CASCADE,
         related_name='promo_codes',
         verbose_name='Подписка')
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        related_name='promo_codes',
+        verbose_name='Подписка',
+        null=True,
+        blank=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=('code', 'subscription'),
+                                    name='unique_code_subscription')
+        ]
