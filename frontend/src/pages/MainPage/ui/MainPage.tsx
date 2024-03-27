@@ -14,10 +14,10 @@ const MainPage = () => {
     localStorage.setItem("token", "9228db1e926465fd7e6dd5d7526dc072ad05132d");
   }, [])
 
-  const { data, error, isFetching } = useGetCategoriesQuery();
-  if (data) {
-    console.log(data);
-  }
+  // const { data, error, isFetching } = useGetCategoriesQuery();
+  // if (data) {
+  //   console.log(data);
+  // }
   // fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
   //   res.json().then((data) => console.log(data))
   // );
@@ -29,7 +29,7 @@ const MainPage = () => {
       <SliderOnboarding slidesData={sliderOnboardingData} />
       <OnboardingDialog />
       <ActiveServicesSlider />
-      {/* <ServicesCategories /> */}
+      <ServicesCategories />
       <ServicesList />
     </main>
   );

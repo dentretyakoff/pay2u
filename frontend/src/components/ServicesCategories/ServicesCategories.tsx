@@ -8,12 +8,11 @@ import { useGetCategoriesQuery } from "services/CategoriesService";
 interface ServicesCategoriesProps {}
 
 export const ServicesCategories = memo(() => {
-  const { data: categories, error, isFetching } = useGetCategoriesQuery();
-  console.log(categories);
+  const { data: categories = [], error = {}, isFetching } = useGetCategoriesQuery();
 
-  const sllicedData = categories.slice(0, 7).concat(categories.slice(-1));
+  const sllicedData = categories?.slice(0, 7).concat(categories.slice(-1));
 
-  if (error) {
+  if ("status" in error) {
     return <div>{error.status}</div>;
   }
 
@@ -21,7 +20,7 @@ export const ServicesCategories = memo(() => {
     <div className="ServicesCategoriesWrapper">
       <h2 className="ServicesCategoriesTitle">Сервисы</h2>
       <Swiper slidesPerView="auto" spaceBetween={16}>
-        {sllicedData.map((category) => (
+        {sllicedData?.map((category) => (
           <SwiperSlide key={category.id}>
             <div className="ServicesCategoriesCard">
               <img

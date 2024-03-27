@@ -1,4 +1,4 @@
-export interface IMySubscriptions {
+export interface IMySubscription {
   id: number;
   service_name: string;
   service_color: string;
