@@ -1,0 +1,36 @@
+.ServiceCard {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+}
+
+.innerContainer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: var(--font-size-l);
+  color: var(--inverted-primary-color);
+}
+
+.cashback {
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-s);
+  background: var(--bg-color);
+  padding: 3px 16px;
+  border-radius: 30px;
+  color: var(--inverted-secondary-color);
+  height: fit-content;
+}

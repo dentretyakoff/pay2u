@@ -1,0 +1,23 @@
+.ActiveServicesSliderWrapper {
+  margin-top: 44px;
+}
+
+.ActiveServicesSliderTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 28px;
+}
+
+.ActiveServicesSliderTitle {
+  width: 250px;
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.ActiveServicesSliderLink {
+  font-size: var(--font-size-xs);
+  line-height: var(--font-line-xs);
+  color: var(--primary-color);
+}

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
-import Arrow from "../../shared/assets/icons/arrow-back.svg";
+import Arrow from "shared/assets/icons/arrow-back.svg";
 import cls from "./Header.module.scss";
 
 interface HeaderProps {

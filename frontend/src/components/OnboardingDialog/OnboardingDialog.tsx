@@ -3,12 +3,12 @@ import { Dialog, Slide } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
-import StoriesPic1 from "../../shared/assets/pics/stories-pic1.png";
-import StoriesPic2 from "../../shared/assets/pics/stories-pic2.png";
-import HomeIcon from "../../shared/assets/icons/home-icon.svg";
-import PhoneIcon from "../../shared/assets/icons/phone-icon.svg";
-import RubleIcon from "../../shared/assets/icons/ruble-icon.svg";
-import CloseButton from "../../shared/assets/icons/close-btn.svg";
+import StoriesPic1 from "shared/assets/pics/stories-pic1.png";
+import StoriesPic2 from "shared/assets/pics/stories-pic2.png";
+import HomeIcon from "shared/assets/icons/home-icon.svg";
+import PhoneIcon from "shared/assets/icons/phone-icon.svg";
+import RubleIcon from "shared/assets/icons/ruble-icon.svg";
+import CloseButton from "shared/assets/icons/close-btn.svg";
 import "./OnboardingDialog.scss";
 import "swiper/scss";
 import "swiper/scss/navigation";
@@ -28,6 +28,9 @@ const Transition = forwardRef(
 interface OnboardingDialogProps {}
 
 export const OnboardingDialog = memo((props: OnboardingDialogProps) => {
+  // eslint-disable-next-line no-empty-pattern
+  const {} = props;
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
