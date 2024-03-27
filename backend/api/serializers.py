@@ -24,8 +24,8 @@ class SubscriptionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ServiceSerializer(serializers.ModelSerializer):
-    """Сериализатор сервисов."""
+class ServiceListSerializer(serializers.ModelSerializer):
+    """Сериализатор списка сервисов с максимальным кэшбеком его подписок."""
     cashback = serializers.IntegerField()
 
     class Meta:
@@ -33,8 +33,10 @@ class ServiceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ServiceRetrieveSerializer(ServiceSerializer):
-    """Сериализатор конкретного сервиса со вложенными подписками."""
+class ServiceRetrieveSerializer(serializers.ModelSerializer):
+    """Сериализатор конкретного сервиса со вложенными подписками и значком
+    'избранное'.
+    """
     subscriptions = SubscriptionSerializer(many=True)
     is_favorited = serializers.SerializerMethodField()
 
@@ -42,24 +44,26 @@ class ServiceRetrieveSerializer(ServiceSerializer):
         user = self.context['request'].user
         return user.favorites.filter(service=service).exists()
 
+    class Meta:
+        model = Service
+        fields = '__all__'
+
 
 class UserSubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписок пользователя."""
-    service_name = serializers.SlugRelatedField(slug_field='name',
-                                                source='subscription.service',
-                                                read_only=True)
-    service_color = serializers.SlugRelatedField(slug_field='color',
-                                                 source='subscription.service',
-                                                 read_only=True)
-    service_image = serializers.SlugRelatedField(slug_field='image.url',
-                                                 source='subscription.service',
-                                                 read_only=True)
-    subscription_name = serializers.SlugRelatedField(slug_field='name',
-                                                     source='subscription',
-                                                     read_only=True)
-    subscription_price = serializers.SlugRelatedField(slug_field='price',
-                                                      source='subscription',
-                                                      read_only=True)
+    service_name = serializers.SlugRelatedField(
+        slug_field='name', source='subscription.service', read_only=True)
+    service_color = serializers.SlugRelatedField(
+        slug_field='color', source='subscription.service', read_only=True)
+    service_image = serializers.SerializerMethodField()
+    subscription_name = serializers.SlugRelatedField(
+        slug_field='name', source='subscription', read_only=True)
+    subscription_price = serializers.SlugRelatedField(
+        slug_field='price', source='subscription', read_only=True)
+
+    def get_service_image(self, user_subscription):
+        return self.context['request'].build_absolute_uri(
+            user_subscription.subscription.service.image.url)
 
     class Meta:
         model = UserSubscription
