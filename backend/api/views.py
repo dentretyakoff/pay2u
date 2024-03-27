@@ -57,7 +57,7 @@ class ServiceListRetrieveViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=False, methods=('get',))
     def favorites(self, request):
         """Список избранных сервисов пользователя."""
-        services = self.get_queryset().filter(favorites_user=self.request.user)
+        services = self.get_queryset().filter(favorites__user=request.user)
         serializer = self.get_serializer(services, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
