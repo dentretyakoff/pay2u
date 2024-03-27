@@ -90,14 +90,13 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
     def subscribe(self, request, pk=None):
         subscription = self.get_object()
         user = request.user
-        serializer = SubscriptionSerializer(instance=subscription)
-        if user.my_subscriptions.filter(subscription=subscription).exists():
-            return Response({'error': 'Уже в подписках.'},
-                            status=status.HTTP_400_BAD_REQUEST)
         user_subscription, created = UserSubscription.objects.get_or_create(
             user=user, subscription=subscription)
+        serializer = SubscriptionSerializer(instance=subscription,
+                                            context={'request': request})
         if not created:
             user_subscription.status = True
+            user_subscription.start_date = timezone.now()
             user_subscription.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 

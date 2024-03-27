@@ -19,15 +19,16 @@ class CategorySerializer(serializers.ModelSerializer):
 
 class SubscriptionSerializer(serializers.ModelSerializer):
     """Сериализатор подписок."""
-    is_subscribed = serializers.SerializerMethodField()
+    is_subscribe = serializers.SerializerMethodField()
 
     class Meta:
         model = Subscription
         fields = '__all__'
 
-    def get_is_subscribed(self, subscription: Subscription) -> bool:
+    def get_is_subscribe(self, subscription: Subscription) -> bool:
         user = self.context['request'].user
-        return user.my_subscriptions.filter(subscription=subscription).exists()
+        return user.my_subscriptions.filter(
+            subscription=subscription, status=True).exists()
 
 
 class ServiceListSerializer(serializers.ModelSerializer):
