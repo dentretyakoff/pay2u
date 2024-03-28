@@ -15,6 +15,9 @@ class Service(models.Model):
     description = models.TextField('Описание cервиса')
     color = models.CharField('Цвет', max_length=7)
     image = models.ImageField('Лого сервиса', upload_to='services/')
+    image_card = models.ImageField(
+        'Карточка сервиса',
+        upload_to='services_cards/')
     created = models.DateTimeField('Дата создания', default=timezone.now)
     rating = models.PositiveIntegerField(
         'Рейтинг сервиса',
