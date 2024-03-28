@@ -4,15 +4,31 @@ import Arrow from "shared/assets/icons/arrow-back.svg";
 import cls from "./Header.module.scss";
 
 interface HeaderProps {
-  path: string;
+  path?: string;
   title?: string;
+  modal?: boolean;
+  onCLick?: () => void;
 }
 
-export const Header = memo(({ path, title = "" }: HeaderProps) => {
-  return (
-    <header className={cls.Header}>
-      <Link to={path} className={cls.link}><img src={Arrow} alt="go back arrow" /></Link>
-      <h1 className={cls.title}>{title}</h1>
-    </header>
-  );
-});
+export const Header = memo(
+  ({ path = "/", title = "", modal, onCLick }: HeaderProps) => {
+    const image = <img src={Arrow} alt="go back arrow" />;
+    return (
+      <header className={cls.Header}>
+        {!modal ? (
+          <Link to={path} className={cls.link}>
+            {image}
+          </Link>
+        ) : (
+          <button type="button" className={cls.link} onClick={onCLick}>
+            {image}
+          </button>
+        )}
+        {/* <Link to={path} className={cls.link}>
+        <img src={Arrow} alt="go back arrow" />
+      </Link> */}
+        <h1 className={cls.title}>{title}</h1>
+      </header>
+    );
+  }
+);
