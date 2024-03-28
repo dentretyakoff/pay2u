@@ -18,5 +18,6 @@ export interface IService {
   rating: number;
   category: number;
   is_favorited?: boolean;
+  cashback: number;
   subscriptions?: ISubscription[];
 }

@@ -1,19 +1,22 @@
 import { memo } from "react";
 import { ServiceCard } from "components/ServiceCard/ServiceCard";
+import { useGetServicesQuery } from "services/ServicesService";
 import cls from "./ServicesList.module.scss";
 
 interface ServicesListProps {}
 
-export const ServicesList = memo(({}: ServicesListProps) => {
+export const ServicesList = memo(() => {
+  const { data: services = [], error, isFetching } = useGetServicesQuery();
   return (
     <section className={cls.ServicesListWrapper}>
-      {Array.from({ length: 10 }).map((_, index) => (
+      {services.map((service) => (
         <ServiceCard
-          key={index}
-          name="Ivi"
-          cashback={10}
-          logo="https://cdn.cssauthor.com/wp-content/uploads/2012/12/accelrys1.png?strip=all&lossy=1&resize=730%2C500&ssl=1"
-          color="#F30745"
+          key={service.id}
+          id={service.id}
+          logo={service.image}
+          name={service.name}
+          cashback={service.cashback}
+          color={service.color}
         />
       ))}
     </section>
