@@ -116,18 +116,29 @@ def create_payment(sender, instance, created, **kwargs):
     """
     Создает платеж, после создания объекта UserSubscription или
     при выставлении status=True когда пользователь возобновил подписку.
+    Привязывает свободный промокод пользователю.
     """
     instance.user_payments.create(
         amount=instance.subscription.price,
         date=instance.start_date,
         user=instance.user)
+    promocodes = instance.subscription.promo_codes.filter(usage_status=False)
+    if promocodes.exists():
+        promocode = promocodes.first()
+        promocode.start_date = timezone.now()
+        promocode.user = instance.user
+        promocode.usage_status = True
+        promocode.save()
 
 
 class PromoCode(models.Model):
     """Промокоды сервисов для активации подписок
     на устройствах пользователей."""
     code = models.CharField('Промокод', max_length=20)
-    start_date = models.DateTimeField('Дата создания', default=timezone.now)
+    start_date = models.DateTimeField(
+        'Дата создания',
+        null=True,
+        blank=True)
     end_date = models.DateTimeField('Дата истечения')
     usage_status = models.BooleanField('Статус использования', default=False)
     subscription = models.ForeignKey(
