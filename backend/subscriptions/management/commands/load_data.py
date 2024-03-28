@@ -51,11 +51,24 @@ class Command(BaseCommand):
                         created=datetime.fromisoformat(service_data['created']),  # noqa
                         category=category)
                     if created:
-                        image_path = data_dir.joinpath(
+                        logo_path = data_dir.joinpath(
                             'services_img', service_data['logo'])
-                        with open(image_path, 'rb') as img:
-                            service.image.save(os.path.basename(image_path),
-                                               File(img), save=True)
+                        card_path = data_dir.joinpath(
+                            'services_cards_img', service_data['card'])
+
+                        with open(logo_path, 'rb') as logo_img:
+                            # Сохраняем логотип в поле "image"
+                            service.image.save(os.path.basename(logo_path),
+                                               File(logo_img), save=False)
+
+                        with open(card_path, 'rb') as card_img:
+                            # Сохраняем карточку в поле "image_card"
+                            service.image_card.save(
+                                os.path.basename(card_path),
+                                File(card_img), save=False)
+
+                        service.save()
+
             self.stdout.write(self.style.SUCCESS('Сервисы загружены.'))
 
             # Загрузка подписок

@@ -4,6 +4,7 @@
       "description": "Описание Иви",
       "color": "#f30745",
       "logo": "ivi.png",
+      "card": "ivi_card.png",
       "category_id": 1,
       "rating": 10,
       "created": "2024-01-01T08:00:00+07:00"
@@ -13,6 +14,7 @@
       "description": "Описание Яндекс Плюс",
       "color": "#8f4bcb",
       "logo": "yandexplus.png",
+      "card": "yandex_plus_card.png",
       "category_id": 5,
       "rating": 9,
       "created": "2024-01-01T08:00:00+07:00"
@@ -22,6 +24,7 @@
       "description": "Описание Окко",
       "color": "#000000",
       "logo": "okko.png",
+      "card": "okko_card.png",
       "category_id": 1,
       "rating": 8,
       "created": "2024-01-01T08:00:00+07:00"
@@ -31,6 +34,7 @@
       "description": "Описание MEGOGO",
       "color": "#22c3b1",
       "logo": "megogo.png",
+      "card": "megogo_card.png",
       "category_id": 1,
       "rating": 7,
       "created": "2024-03-24T08:00:00+07:00"
@@ -40,6 +44,7 @@
       "description": "Описание Доктор Рядом",
       "color": "#458c27",
       "logo": "doctornear.png",
+      "card": "doctornear_card.png",
       "category_id": 8,
       "rating": 6,
       "created": "2024-03-24T08:00:00+07:00"
@@ -49,6 +54,7 @@
       "description": "Описание ЛитРес",
       "color": "#ff5006",
       "logo": "litress.png",
+      "card": "litress_card.png",
       "category_id": 2,
       "rating": 5,
       "created": "2024-01-01T08:00:00+07:00"
@@ -58,6 +64,7 @@
       "description": "Описание MyBook",
       "color": "#ffb83e",
       "logo": "mybook.png",
+      "card": "mybook_card.png",
       "category_id": 2,
       "rating": 4,
       "created": "2024-01-01T08:00:00+07:00"
@@ -67,6 +74,7 @@
       "description": "Описание Spotify",
       "color": "#1ed561",
       "logo": "spotify.png",
+      "card": "spotify_card.png",
       "category_id": 3,
       "rating": 3,
       "created": "2024-01-01T08:00:00+07:00"
@@ -76,6 +84,7 @@
       "description": "Описание Storytel",
       "color": "#ec6607",
       "logo": "storytel.png",
+      "card": "storytel_card.png",
       "category_id": 2,
       "rating": 2,
       "created": "2024-01-01T08:00:00+07:00"
@@ -85,6 +94,7 @@
       "description": "Описание Zoom Class",
       "color": "#0085cd",
       "logo": "zoomclass.png",
+      "card": "zoom_class_card.png",
       "category_id": 4,
       "rating": 1,
       "created": "2024-03-24T08:00:00+07:00"
