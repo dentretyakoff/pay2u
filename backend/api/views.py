@@ -13,7 +13,8 @@ from api.serializers import (CategorySerializer,
                              UserSubscriptionSerializer,
                              SubscriptionSerializer,
                              PaymentSerializer,
-                             ExpensesSerializer)
+                             ExpensesSerializer,
+                             PromoCodeSerializer)
 from .openapi import service_schema, user_subscription_schema
 from .filters import ServiceSearch, UserSubscriptionFilter
 from payments.models import Payment
@@ -117,6 +118,14 @@ class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
         user_subscription.renewal_status = renewal_status[request.method]
         user_subscription.save()
         serializer = UserSubscriptionSerializer(instance=user_subscription)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=True, methods=('get',))
+    def promocode(self, request, pk=None):
+        promocodes = (request.user.promo_codes
+                      .filter(subscription_id=pk)
+                      .order_by('-start_date'))
+        serializer = PromoCodeSerializer(promocodes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

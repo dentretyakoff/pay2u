@@ -5,7 +5,8 @@ from payments.models import Payment
 from subscriptions.models import (Category,
                                   Service,
                                   UserSubscription,
-                                  Subscription)
+                                  Subscription,
+                                  PromoCode)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -106,3 +107,10 @@ class ExpensesSerializer(serializers.ModelSerializer):
         year_month = f'{date.today().year}-{date.today().month:02}'
         queryset = self.instance.filter(date__startswith=year_month)
         return sum(payment.amount for payment in queryset)
+
+
+class PromoCodeSerializer(serializers.ModelSerializer):
+    """Сериализатор промокодов."""
+    class Meta:
+        model = PromoCode
+        fields = '__all__'
