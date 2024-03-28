@@ -68,6 +68,8 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
         slug_field='name', source='subscription', read_only=True)
     subscription_price = serializers.SlugRelatedField(
         slug_field='price', source='subscription', read_only=True)
+    subscription_months = serializers.SlugRelatedField(
+        slug_field='months', source='subscription', read_only=True)
 
     def get_service_image(self, user_subscription):
         return self.context['request'].build_absolute_uri(
