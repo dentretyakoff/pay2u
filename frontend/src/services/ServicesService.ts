@@ -36,11 +36,11 @@ export const servicesAPI = createApi({
     }),
     getServicesByCategory: builder.query<IService[], number>({
       query: (category) => ({
-        url: `/services/?category=${category}`,
+        url: `/services/?category_id=${category}`,
       }),
       providesTags: ["Services"],
     }),
-    getFavorites: builder.query<IService, void>({
+    getFavorites: builder.query<IService[], void>({
       query: () => ({
         url: "/services/favorites/",
       }),

@@ -15,8 +15,6 @@ interface ActiveServiceCardProps {
   data: IMySubscription;
 }
 
-const localhost = "http://localhost:8000";
-
 export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
   // const { logo, name, cashback, color, id, category = 0, created = "", rating = 0 } = props;
   const { data: sub } = props;
@@ -27,7 +25,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
     <Link to={"/"} className={cls.ActiveServiceCard}>
       <div className={cls.innerContainer}>
         <img
-          src={`${localhost}${sub.service_image}`}
+          src={sub.service_image}
           alt="logo"
           className={cls.logo}
         />
@@ -37,7 +35,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
         </div>
       </div>
       <p className={cls.title}>{sub.service_name}</p>
-      <p className={cls.option}>Тариф семейный</p>
+      <p className={cls.option}>{sub.subscription_name}</p>
       <p className={cls.endTime}>Действует до: {date}</p>
     </Link>
   );

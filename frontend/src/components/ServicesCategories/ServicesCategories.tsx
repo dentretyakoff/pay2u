@@ -34,14 +34,22 @@ export const ServicesCategories = memo(() => {
       <h2 className="ServicesCategoriesTitle">Сервисы</h2>
       <Swiper slidesPerView="auto" spaceBetween={16}>
         <SwiperSlide>
-          <CategoryDialog name="Избранное" logo={favorites} />
+          <CategoryDialog
+            name="Избранное"
+            logo={favorites}
+            category="Избранное"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <CategoryDialog name="Новые" logo={news} />
+          <CategoryDialog name="Новые" logo={news} category="Новые" />
         </SwiperSlide>
         {sllicedData?.map((category) => (
           <SwiperSlide key={category.id}>
-            <CategoryDialog name={category.name} logo={category.image} />
+            <CategoryDialog
+              name={category.name}
+              logo={category.image}
+              category={String(category.id)}
+            />
           </SwiperSlide>
         ))}
         <SwiperSlide>

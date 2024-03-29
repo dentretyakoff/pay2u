@@ -7,6 +7,7 @@ import { ServicesList } from "components/ServicesList/ServicesList";
 import { SliderOnboarding } from "components/SliderOnboarding/SliderOnboarding";
 import { useEffect } from "react";
 import { useGetCategoriesQuery } from "services/CategoriesService";
+import { useGetServicesQuery } from "services/ServicesService";
 import { sliderOnboardingData } from "shared/data/sliderOnboarding";
 
 const MainPage = () => {
@@ -21,6 +22,7 @@ const MainPage = () => {
   // fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
   //   res.json().then((data) => console.log(data))
   // );
+  const { data: services = [], error, isFetching } = useGetServicesQuery();
 
   return (
     <main>
@@ -30,7 +32,7 @@ const MainPage = () => {
       <OnboardingDialog />
       <ActiveServicesSlider />
       <ServicesCategories />
-      <ServicesList />
+      <ServicesList services={services}/>
     </main>
   );
 };
