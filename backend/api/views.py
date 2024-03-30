@@ -95,6 +95,9 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
             user=user, subscription=subscription)
         serializer = SubscriptionSerializer(instance=subscription,
                                             context={'request': request})
+        if not created and user_subscription.status:
+            return Response({'error': 'Уже в подписках.'},
+                            status=status.HTTP_400_BAD_REQUEST)
         if not created:
             user_subscription.status = True
             user_subscription.start_date = timezone.now()
