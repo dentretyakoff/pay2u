@@ -34,7 +34,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
         />
         <div className={cls.priceContainer}>
           <p className={cls.price}>{`${sub.subscription_price} RUB`}</p>
-          <p className={cls.duaration}>за 1 месяц</p>
+          <p className={cls.duaration}>за {sub.subscription_months} {wordEnding}</p>
         </div>
       </div>
       <p className={cls.title}>{sub.service_name}</p>
