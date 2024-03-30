@@ -5,7 +5,8 @@ from payments.models import Payment
 from subscriptions.models import (Category,
                                   Service,
                                   UserSubscription,
-                                  Subscription)
+                                  Subscription,
+                                  PromoCode)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -67,6 +68,8 @@ class UserSubscriptionSerializer(serializers.ModelSerializer):
         slug_field='name', source='subscription', read_only=True)
     subscription_price = serializers.SlugRelatedField(
         slug_field='price', source='subscription', read_only=True)
+    subscription_months = serializers.SlugRelatedField(
+        slug_field='months', source='subscription', read_only=True)
 
     def get_service_image(self, user_subscription):
         return self.context['request'].build_absolute_uri(
@@ -106,3 +109,10 @@ class ExpensesSerializer(serializers.ModelSerializer):
         year_month = f'{date.today().year}-{date.today().month:02}'
         queryset = self.instance.filter(date__startswith=year_month)
         return sum(payment.amount for payment in queryset)
+
+
+class PromoCodeSerializer(serializers.ModelSerializer):
+    """Сериализатор промокодов."""
+    class Meta:
+        model = PromoCode
+        fields = '__all__'

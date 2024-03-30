@@ -2,47 +2,47 @@
     {
       "name": "Кино и сериалы",
       "description": "Описание Кино и сериалы",
-      "image": "category.png"
+      "image": "movies_and_tv_series.png"
     },
     {
       "name": "Книги",
       "description": "Описание Книги",
-      "image": "category.png"
+      "image": "books.png"
     },
     {
       "name": "Музыка",
       "description": "Описание Музыка",
-      "image": "category.png"
+      "image": "music.png"
     },
     {
       "name": "Обучение",
       "description": "Описание Обучение",
-      "image": "category.png"
+      "image": "training.png"
     },
     {
       "name": "Дом",
       "description": "Описание Дом",
-      "image": "category.png"
+      "image": "home.png"
     },
     {
       "name": "Игры и стриминг",
       "description": "Описание Игры и стриминг",
-      "image": "category.png"
+      "image": "games_and_streaming.png"
     },
     {
       "name": "Социальные сети",
       "description": "Описание Социальные сети",
-      "image": "category.png"
+      "image": "social_media.png"
     },
     {
       "name": "Благотворительность",
       "description": "Описание Благотворительность",
-      "image": "category.png"
+      "image": "charity.png"
     },
     {
       "name": "Облачные хранилища",
       "description": "Описание Облачные хранилища",
-      "image": "category.png"
+      "image": "cloud_storage.png"
     }
   ]
   
