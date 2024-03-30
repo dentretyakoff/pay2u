@@ -117,7 +117,8 @@ class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
         renewal_status = {'POST': True, 'DELETE': False}
         user_subscription.renewal_status = renewal_status[request.method]
         user_subscription.save()
-        serializer = UserSubscriptionSerializer(instance=user_subscription)
+        serializer = UserSubscriptionSerializer(
+            instance=user_subscription, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     @action(detail=True, methods=('get',))
