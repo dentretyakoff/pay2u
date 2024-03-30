@@ -5,6 +5,7 @@ export interface IMySubscription {
   service_image: string;
   subscription_name: string;
   subscription_price: number;
+  subscription_months: number;
   start_date: Date;
   end_date: Date;
   status: boolean;

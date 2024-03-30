@@ -1,12 +1,15 @@
 import { memo } from "react";
 import { ServiceCard } from "components/ServiceCard/ServiceCard";
 import { useGetServicesQuery } from "services/ServicesService";
+import { IService } from "models/IService";
 import cls from "./ServicesList.module.scss";
 
-interface ServicesListProps {}
+interface ServicesListProps {
+  services: IService[]
+}
 
-export const ServicesList = memo(() => {
-  const { data: services = [], error, isFetching } = useGetServicesQuery();
+export const ServicesList = memo(({ services }: ServicesListProps) => {
+  // const { data: services = [], error, isFetching } = useGetServicesQuery();
   return (
     <section className={cls.ServicesListWrapper}>
       {services.map((service) => (
