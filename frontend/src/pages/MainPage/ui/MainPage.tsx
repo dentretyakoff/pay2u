@@ -7,22 +7,28 @@ import { ServicesList } from "components/ServicesList/ServicesList";
 import { SliderOnboarding } from "components/SliderOnboarding/SliderOnboarding";
 import { useEffect } from "react";
 import { useGetCategoriesQuery } from "services/CategoriesService";
-import { useGetServicesQuery } from "services/ServicesService";
+import {
+  useGetFindServicesQuery,
+  useGetServicesQuery,
+} from "services/ServicesService";
 import { sliderOnboardingData } from "shared/data/sliderOnboarding";
+import { useAppSelector } from "shared/hooks/redux";
 
 const MainPage = () => {
+  const query = useAppSelector((state) => state.search.query);
   useEffect(() => {
     localStorage.setItem("token", "9228db1e926465fd7e6dd5d7526dc072ad05132d");
-  }, [])
+  }, []);
 
-  // const { data, error, isFetching } = useGetCategoriesQuery();
-  // if (data) {
-  //   console.log(data);
-  // }
-  // fetch("https://jsonplaceholder.typicode.com/posts").then((res) =>
-  //   res.json().then((data) => console.log(data))
-  // );
-  const { data: services = [], error, isFetching } = useGetServicesQuery();
+  const {
+    data: searchResults,
+    isFetching: searchFetching,
+    refetch,
+  } = useGetFindServicesQuery(query, { skip: query === "" });
+
+  const { data: allServices = [], error, isFetching } = useGetServicesQuery();
+
+  const servicesList = !query ? allServices : searchResults;
 
   return (
     <main>
@@ -32,7 +38,7 @@ const MainPage = () => {
       <OnboardingDialog />
       <ActiveServicesSlider />
       <ServicesCategories />
-      <ServicesList services={services}/>
+      <ServicesList services={servicesList || []} />
     </main>
   );
 };
