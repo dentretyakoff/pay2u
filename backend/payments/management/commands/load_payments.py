@@ -25,7 +25,6 @@ class Command(BaseCommand):
                 for user_sub_data in data:
                     UserSubscription.objects.get_or_create(
                         start_date=datetime.fromisoformat(user_sub_data['start_date']),  # noqa
-                        end_date=datetime.fromisoformat(user_sub_data['end_date']),  # noqa
                         user=user,
                         subscription_id=user_sub_data['subscription_id'])
             self.stdout.write(self.style.SUCCESS(

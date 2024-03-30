@@ -6,7 +6,7 @@ from backend.yasg import urlpatterns as yasg_urls
 
 
 urlpatterns = [
-    path('api/', include('api.urls')),
+    path(f'api/{settings.API_VERSION}/', include('api.urls')),
 ]
 
 urlpatterns += yasg_urls

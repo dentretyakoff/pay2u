@@ -1,6 +1,7 @@
 from dateutil.relativedelta import relativedelta
 from django.conf import settings
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import (MinValueValidator, MaxValueValidator,
+                                    RegexValidator)
 from django.db import models
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -11,9 +12,12 @@ from users.models import User
 
 class Service(models.Model):
     """Сервис подписок."""
-    name = models.CharField('Сервис', max_length=200, unique=True)
+    name = models.CharField('Сервис', max_length=200, unique=True,
+                            db_index=True)
     description = models.TextField('Описание cервиса')
-    color = models.CharField('Цвет', max_length=7)
+    color = models.CharField(
+        'Цвет',
+        validators=[RegexValidator(regex='^#(?:[0-9a-fA-F]{6})$')])
     image = models.ImageField('Лого сервиса', upload_to='services/')
     image_card = models.ImageField(
         'Карточка сервиса',
@@ -100,14 +104,9 @@ class UserSubscription(models.Model):
         ]
 
     def save(self, *args, **kwargs):
-        """
-        Вычисление даты окончания подписки.
-        При подключении оплаты дату можно забирать из чеков,
-        возможно этот метод стоит убрать.
-        """
-        if not self.end_date:
-            self.end_date = self.start_date + relativedelta(
-                month=self.subscription.months)
+        """Вычисление даты окончания подписки."""
+        self.end_date = self.start_date + relativedelta(
+            months=self.subscription.months)
         super().save(*args, **kwargs)
 
 
