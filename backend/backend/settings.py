@@ -161,6 +161,9 @@ REST_FRAMEWORK = {
     ]
 }
 
+# Версия API
+API_VERSION = "v1"
+
 # Дельта в днях для получения новых сервисов
 DATE_DELTA = 30
 MIN_CASHBACK = 1
