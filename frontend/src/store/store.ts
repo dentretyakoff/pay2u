@@ -3,10 +3,12 @@ import { categoriesAPI } from "services/CategoriesService";
 import { servicesAPI } from "services/ServicesService";
 import { mySubscriptionsAPI } from "services/MySubscriptions";
 import userReducer from "./reducers/UserSlice";
+import searchSlice from "./reducers/searchSlice";
 // import { setupListeners } from "@reduxjs/toolkit/query";
 
 const rootReducer = combineReducers({
   userReducer,
+  search: searchSlice,
   [categoriesAPI.reducerPath]: categoriesAPI.reducer,
   [servicesAPI.reducerPath]: servicesAPI.reducer,
   [mySubscriptionsAPI.reducerPath]: mySubscriptionsAPI.reducer,
