@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { IMySubscription } from "models/IMySubscription";
+import { getWordEnding } from "shared/lib/getWordEnding";
 import cls from "./ActiveServiceCard.module.scss";
 
 interface ActiveServiceCardProps {
@@ -20,6 +21,8 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
   const { data: sub } = props;
 
   const date = new Date(sub.end_date).toLocaleDateString();
+
+  const wordEnding = getWordEnding(sub.subscription_months, "месяц");
 
   return (
     <Link to={"/"} className={cls.ActiveServiceCard}>

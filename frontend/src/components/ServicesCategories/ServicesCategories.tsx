@@ -1,12 +1,12 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useGetCategoriesQuery } from "services/CategoriesService";
+import { CategoryDialog } from "components/CategoryDialog/CategoryDialog";
 import favorites from "shared/assets/icons/favorites-icon.svg";
 import news from "shared/assets/icons/new-icon.svg";
 import all from "shared/assets/icons/all-icon.svg";
 import "swiper/scss";
 import "./ServicesCategories.scss";
-import { CategoryDialog } from "components/CategoryDialog/CategoryDialog";
 
 interface ServicesCategoriesProps {}
 
@@ -17,13 +17,7 @@ export const ServicesCategories = memo(() => {
     isFetching,
   } = useGetCategoriesQuery();
 
-  const sllicedData = categories?.slice(0, 3).concat(categories.slice(-1));
-
-  // const [open, setOpen] = useState(false);
-
-  // const handleClick = () => {
-  //   setOpen(!open);
-  // };
+  const sllicedData = categories?.slice(0, 5);
 
   if ("status" in error) {
     return <div>{error.status}</div>;
@@ -53,14 +47,7 @@ export const ServicesCategories = memo(() => {
           </SwiperSlide>
         ))}
         <SwiperSlide>
-          <div className="ServicesCategoriesCard">
-            <img
-              src={all}
-              alt="category logo"
-              className="ServicesCategoriesLogo"
-            />
-            <p className="ServicesCategoriesName">Все</p>
-          </div>
+          <CategoryDialog name="Все" logo={all} category="Все" />
         </SwiperSlide>
       </Swiper>
     </div>

@@ -34,5 +34,7 @@ module.exports = {
     "object-curly-newline": "off",
     "react/require-default-props": "warn",
     "react/jsx-one-expression-per-line": "off",
+    "operator-linebreak": "off",
+    "no-else-return": "off",
   },
 };

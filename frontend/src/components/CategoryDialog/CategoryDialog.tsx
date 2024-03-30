@@ -3,6 +3,7 @@ import { Dialog, Slide } from "@mui/material";
 import { TransitionProps } from "@mui/material/transitions";
 import { Header } from "components/Header/Header";
 import { ServicesList } from "components/ServicesList/ServicesList";
+import { AllCategoriesDialog } from "components/AllCategoriesDialog/AllCategoriesDialog";
 import {
   useGetFavoritesQuery,
   useGetNewServicesQuery,
@@ -21,16 +22,19 @@ const Transition = forwardRef(
   }
 );
 
-type Category = "Избранное" | "Новые" | string;
+type Category = "Избранное" | "Новые" | "Все" | string;
+
+type FlexDirection = "row" | "column";
 
 interface CategoryDialogProps {
   name: string;
   logo: string;
   category?: Category;
+  direction?: FlexDirection;
 }
 
 export const CategoryDialog = memo((props: CategoryDialogProps) => {
-  const { name, logo, category } = props;
+  const { name, logo, category, direction = "column" } = props;
 
   const [open, setOpen] = useState(false);
 
@@ -47,7 +51,8 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
   });
 
   const { data: byId } = useGetServicesByCategoryQuery(Number(category), {
-    skip: category === "Избранное" || category === "Новые",
+    skip:
+      category === "Избранное" || category === "Новые" || category === "Все",
     refetchOnMountOrArgChange: true,
   });
 
@@ -65,6 +70,7 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
         type="button"
         onClick={handleClickOpen}
         className={cls.ServicesCategoriesCard}
+        style={{ flexDirection: direction }}
       >
         <img
           src={logo}
@@ -79,14 +85,26 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <div className={cls.header}>
-          <Header title={name} modal onCLick={handleClose} />
-          {category === "Избранное" && (
-            <ServicesList services={favorites || []} />
-          )}
-          {category === "Новые" && <ServicesList services={news || []} />}
-          {category !== "Избранное" && category !== "Новые" && (
-            <ServicesList services={byId || []} />
+        <div className={cls.wrapper}>
+          <div>
+            <Header title={name} modal onCLick={handleClose} />
+            {category === "Избранное" && (
+              <ServicesList services={favorites || []} />
+            )}
+            {category === "Новые" && <ServicesList services={news || []} />}
+            {category !== "Избранное" &&
+              category !== "Новые" &&
+              category !== "Все" && <ServicesList services={byId || []} />}
+            {category === "Все" && <AllCategoriesDialog />}
+          </div>
+          {category !== "Все" && (
+            <button
+              type="button"
+              className={cls.dialogCloseButton}
+              onClick={handleClose}
+            >
+              На главную
+            </button>
           )}
         </div>
       </Dialog>

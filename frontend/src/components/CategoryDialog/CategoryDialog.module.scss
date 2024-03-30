@@ -1,11 +1,19 @@
-.header {
-  padding: 0 16px;
+.wrapper {
+  height: 100vh;
+  padding: 0 16px 66px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .ServicesCategoriesCard {
   width: 74px;
   border: none;
   background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .ServicesCategoriesLogo {
@@ -15,8 +23,18 @@
 }
 
 .ServicesCategoriesName {
-  margin-top: 8px;
   text-align: center;
   font-size: var(--font-size-xs);
   line-height: var(--font-size-xs);
+}
+
+.dialogCloseButton {
+  width: 100%;
+  height: 48px;
+  background: var(--accent-color);
+  color: var(--inverted-primary-color);
+  border: none;
+  border-radius: 12px;
+  font-size: var(--font-size-m);
+  margin-top: 56px;
 }
