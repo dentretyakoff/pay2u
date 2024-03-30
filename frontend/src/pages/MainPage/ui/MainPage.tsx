@@ -34,10 +34,14 @@ const MainPage = () => {
     <main>
       <Header path="/" title="Развлекательные сервисы" />
       <SearchBar onSearch={() => {}} />
-      <SliderOnboarding slidesData={sliderOnboardingData} />
-      <OnboardingDialog />
-      <ActiveServicesSlider />
-      <ServicesCategories />
+      {!query && (
+        <>
+          <SliderOnboarding slidesData={sliderOnboardingData} />
+          <OnboardingDialog />
+          <ActiveServicesSlider />
+          <ServicesCategories />
+        </>
+      )}
       <ServicesList services={servicesList || []} />
     </main>
   );
