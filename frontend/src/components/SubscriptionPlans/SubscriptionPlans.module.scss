@@ -1,0 +1,22 @@
+.SubscriptionPlans {
+  margin-top: 28px;
+}
+
+.text {
+  font-size: var(--font-line-m);
+  font-weight: var(--font-weight-bold);
+}
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.noData {
+  margin: 40px 0 20px;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}

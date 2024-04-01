@@ -1,4 +1,4 @@
-interface ISubscription {
+export interface ISubscription {
   id: number;
   name: string;
   description: string;
@@ -13,6 +13,7 @@ export interface IService {
   name: string;
   description: string;
   image: string;
+  image_card: string;
   color: string;
   created: string;
   rating: number;

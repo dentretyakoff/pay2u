@@ -1,10 +1,11 @@
 import { MainPage } from "pages/MainPage";
 import { NotFoundPage } from "pages/NotFoundPage";
+import { ServicePage } from "pages/ServicePage";
 import { RouteProps } from "react-router-dom";
 
 export enum AppRoutes {
   MAIN = "main",
-  //   SERVICE_OVERVIEW = "service_overview",
+  SERVICE_OVERVIEW = "service_overview",
   //   SUBSCRIPTION = "subscription",
   //   ACTIVE_SERVICES = "active_services",
   //   ACTIVE_SERVICE_INFO = "active_service_info",
@@ -15,7 +16,7 @@ export enum AppRoutes {
 
 export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: "/",
-  //   [AppRoutes.SERVICE_OVERVIEW]: "/service_overview",
+  [AppRoutes.SERVICE_OVERVIEW]: "/services/:id",
   //   [AppRoutes.SUBSCRIPTION]: "/subscription",
   //   [AppRoutes.ACTIVE_SERVICES]: "/active_services",
   //   [AppRoutes.ACTIVE_SERVICE_INFO]: "/active_service_info",
@@ -27,10 +28,10 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
     path: RouterPath.main,
     element: <MainPage />,
   },
-  //   [AppRoutes.SERVICE_OVERVIEW]: {
-  //     path: RouterPath.service_overview,
-  //     element: <ServiceOverviewPage />,
-  //   },
+  [AppRoutes.SERVICE_OVERVIEW]: {
+    path: RouterPath.service_overview,
+    element: <ServicePage />,
+  },
   //   [AppRoutes.SUBSCRIPTION]: {
   //     path: RouterPath.subscription,
   //     element: <SubscriptionPage />,

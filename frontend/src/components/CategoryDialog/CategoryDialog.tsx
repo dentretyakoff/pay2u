@@ -40,8 +40,6 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
 
   const {
     data: favorites,
-    error,
-    isFetching,
   } = useGetFavoritesQuery(undefined, {
     skip: category !== "Избранное",
   });
