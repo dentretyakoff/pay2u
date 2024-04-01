@@ -11,14 +11,18 @@ class Command(BaseCommand):
     help = 'Создание пользователя для разработки'
 
     def handle(self, *args, **kwarg):
-        username = 'dev_user'
+        username = os.getenv('DEV_USER_USERNAME', default='dev_user')
+        password = os.getenv('DEV_USER_PASSWORD', default='dev_user_password')
         token = os.getenv('DEV_USER_TOKEN')
         if not token:
             self.stdout.write(
                 self.style.ERROR('Заполни DEV_USER_TOKEN в файле .env'))
             return
-        user, created = User.objects.get_or_create(username=username)
-        if created:
+        try:
+            User.objects.get(username=username)
+        except User.DoesNotExist:
+            user = User.objects.create_user(username=username,
+                                            password=password)
             Token.objects.create(user=user, key=token)
             self.stdout.write(
                 self.style.SUCCESS('Создан пользователь с токеном'))

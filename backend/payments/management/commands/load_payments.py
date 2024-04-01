@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 from django.core.management import BaseCommand
@@ -17,7 +18,8 @@ class Command(BaseCommand):
         data_dir = settings.BASE_DIR / 'test_data'
         payments_data = data_dir / 'payments.json'
         user_subscriptions = data_dir / 'user_subscriptions.json'
-        user = User.objects.get(username='dev_user')
+        user = User.objects.get(username=os.getenv('DEV_USER_USERNAME',
+                                                   default='dev_user'))
         try:
             # Создание подписок пользователя
             with open(user_subscriptions, encoding='utf-8') as json_file:

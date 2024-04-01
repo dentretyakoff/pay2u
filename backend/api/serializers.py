@@ -38,7 +38,7 @@ class ServiceListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = '__all__'
+        fields = ('id', 'cashback', 'name', 'color', 'image')
 
 
 class ServiceRetrieveSerializer(serializers.ModelSerializer):
@@ -50,7 +50,7 @@ class ServiceRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        fields = '__all__'
+        exclude = ('color', 'image', 'created', 'rating')
 
     def get_is_favorited(self, service: Service) -> bool:
         user = self.context['request'].user
