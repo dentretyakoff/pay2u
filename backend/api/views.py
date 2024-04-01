@@ -3,6 +3,8 @@ from django.db import IntegrityError
 from django.db.models import Count, Max
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -62,6 +64,10 @@ class ServiceListRetrieveViewSet(viewsets.ReadOnlyModelViewSet):
         serializer = self.get_serializer(services, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(
+        method='post',
+        request_body=openapi.Schema(type=openapi.TYPE_OBJECT),
+        responses={status.HTTP_200_OK: ServiceListSerializer()})
     @action(detail=True, methods=('post', 'delete'))
     def favorite(self, request, pk=None):
         """Добавить/удалить сервис в избранном пользователя."""
@@ -87,8 +93,13 @@ class SubscriptionRetrieveViewSet(mixins.RetrieveModelMixin,
     queryset = Subscription.objects.all()
     serializer_class = SubscriptionSerializer
 
+    @swagger_auto_schema(
+        method='post',
+        request_body=openapi.Schema(type=openapi.TYPE_OBJECT),
+        responses={status.HTTP_200_OK: SubscriptionSerializer()})
     @action(detail=True, methods=('post',))
     def subscribe(self, request, pk=None):
+        """Подписаться на выбранный сервис."""
         subscription = self.get_object()
         user = request.user
         user_subscription, created = UserSubscription.objects.get_or_create(
@@ -114,8 +125,13 @@ class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = UserSubscriptionSerializer
     filter_backends = (UserSubscriptionFilter,)
 
+    @swagger_auto_schema(
+        method='post',
+        request_body=openapi.Schema(type=openapi.TYPE_OBJECT),
+        responses={status.HTTP_200_OK: UserSubscriptionSerializer()})
     @action(detail=True, methods=('post', 'delete'))
     def renewal(self, request, pk=None):
+        """Отвключить/включить автопродление подписки."""
         user_subscription = self.get_object()
         renewal_status = {'POST': True, 'DELETE': False}
         user_subscription.renewal_status = renewal_status[request.method]
@@ -124,10 +140,15 @@ class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
             instance=user_subscription, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @swagger_auto_schema(responses={status.HTTP_200_OK: PromoCodeSerializer()})
     @action(detail=True, methods=('get',))
-    def promocode(self, request, pk=None):
-        promocodes = (request.user.promo_codes
-                      .filter(subscription_id=pk)
+    def promocodes(self, request, pk=None):
+        """
+        Получить список промокодов пользователя выданных для сервиса.
+        """
+        user_subscription = self.get_object()
+        promocodes = (user_subscription.subscription.promo_codes
+                      .filter(user=request.user)
                       .order_by('-start_date'))
         serializer = PromoCodeSerializer(promocodes, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -144,7 +165,10 @@ class PaymentListViewSet(mixins.ListModelMixin,
     def get_queryset(self):
         return super().get_queryset().filter(user=self.request.user)
 
+    @swagger_auto_schema(responses={status.HTTP_200_OK: ExpensesSerializer()})
     @action(detail=False, methods=('get',))
     def expenses(self, request):
+        """Получает затраты пользователя в текущем месяце
+        и кешбек за все время."""
         serializer = ExpensesSerializer(self.get_queryset())
         return Response(serializer.data, status=status.HTTP_200_OK)
