@@ -171,6 +171,8 @@ MIN_CASHBACK = 1
 MAX_CASHBACK = 100
 MIN_RATING = 0
 MAX_RATING = 10
+MIN_MONTHS = 1
+MAX_MONTHS = 1200
 
 # Логгирование в консоль приложения, также выводит row-SQL запросы.
 # LOGGING = {

@@ -144,7 +144,7 @@ class UserSubscriptionViewSet(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=('get',))
     def promocodes(self, request, pk=None):
         """
-        Получить список промокодов пользователя выданных для сервиса.
+        Получить список промокодов пользователя для текущей подписки.
         """
         user_subscription = self.get_object()
         promocodes = (user_subscription.subscription.promo_codes
