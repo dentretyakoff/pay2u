@@ -50,7 +50,7 @@ class ServiceRetrieveSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Service
-        exclude = ('color', 'image', 'created', 'rating')
+        exclude = ('color', 'created', 'rating')
 
     def get_is_favorited(self, service: Service) -> bool:
         user = self.context['request'].user
