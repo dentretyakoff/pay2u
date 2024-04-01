@@ -47,7 +47,11 @@ class Subscription(models.Model):
     name = models.CharField('Подписка', max_length=200)
     description = models.TextField('Описание подписки')
     price = models.PositiveIntegerField('Стоимость')
-    months = models.IntegerField('Период действия в месяцах')
+    months = models.PositiveIntegerField(
+        'Период действия в месяцах',
+        default=settings.MIN_MONTHS,
+        validators=[MinValueValidator(settings.MIN_MONTHS),
+                    MaxValueValidator(settings.MAX_MONTHS)])
     cashback = models.PositiveIntegerField(
         'Кешбэк подписки',
         default=settings.MIN_CASHBACK,
