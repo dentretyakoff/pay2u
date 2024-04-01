@@ -40,6 +40,12 @@ export const servicesAPI = createApi({
       }),
       providesTags: ["Services"],
     }),
+    getSeparateService: builder.query<IService, string>({
+      query: (id) => ({
+        url: `/services/${id}/`,
+      }),
+      providesTags: ["Services"],
+    }),
     getFavorites: builder.query<IService[], void>({
       query: () => ({
         url: "/services/favorites/",
@@ -68,6 +74,7 @@ export const {
   useGetNewServicesQuery,
   useGetFindServicesQuery,
   useGetServicesByCategoryQuery,
+  useGetSeparateServiceQuery,
   useGetFavoritesQuery,
   useAddFavoriteMutation,
   useDeleteFavoriteMutation

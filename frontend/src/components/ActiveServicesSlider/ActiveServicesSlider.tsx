@@ -6,8 +6,6 @@ import { useGetMySubscriptionsQuery } from "services/MySubscriptions";
 import "swiper/scss";
 import "./ActiveServicesSlider.scss";
 
-interface ActiveServicesSliderProps {}
-
 export const ActiveServicesSlider = memo(() => {
   const { data: userSubs, error, isFetching } = useGetMySubscriptionsQuery();
 

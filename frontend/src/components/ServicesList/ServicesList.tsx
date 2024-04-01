@@ -27,11 +27,7 @@ export const ServicesList = memo(({ services }: ServicesListProps) => {
       {services.map((service) => (
         <ServiceCard
           key={service.id}
-          id={service.id}
-          logo={service.image}
-          name={service.name}
-          cashback={service.cashback}
-          color={service.color}
+          service={service}
         />
       ))}
     </section>

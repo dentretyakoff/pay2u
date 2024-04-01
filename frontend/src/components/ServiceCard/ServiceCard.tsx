@@ -1,36 +1,34 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
+import { IService } from "models/IService";
 import cls from "./ServiceCard.module.scss";
 
 interface ServiceCardProps {
-  id: number;
-  logo: string;
-  name: string;
-  cashback: number;
-  color: string;
-  created?: string;
-  rating?: number;
-  category?: number;
+  service: IService;
+  size?: "small" | "regular";
 }
 
 export const ServiceCard = memo((props: ServiceCardProps) => {
   const {
-    logo,
-    name,
-    cashback,
-    color,
-    id,
-    category = 0,
-    created = "",
-    rating = 0,
+    service: { id, image, name, cashback, color },
+    size = "regular",
   } = props;
+
+  const regular = size === "regular";
+
   return (
-    <Link to={`/services/${id}`} className={cls.ServiceCard} style={{ background: color }}>
+    <Link
+      to={`/services/${id}`}
+      className={regular ? cls.ServiceCard : cls.ServiceCardSmall}
+      style={{ background: color }}
+    >
       <div className={cls.innerContainer}>
-        <img src={logo} alt="service logo" className={cls.logo} />
+        <img src={image} alt="service logo" className={regular ? cls.logo : cls.logoSmall} />
         <p className={cls.name}>{name}</p>
       </div>
-      <p className={cls.cashback}>кешбэк {cashback}%</p>
+      <p className={regular ? cls.cashback : cls.cashbackSmall}>
+        кешбэк {cashback}%
+      </p>
     </Link>
   );
 });
