@@ -8,13 +8,9 @@ import { SubscriptionPlans } from "components/SubscriptionPlans/SubscriptionPlan
 import { SimilarServices } from "components/SimilarServices/SimilarServices";
 import cls from "./ServicePage.module.scss";
 
-interface ServicePageProps {}
-
 const ServicePage = memo(() => {
   const { id } = useParams();
   const { data: service } = useGetSeparateServiceQuery(id || "");
-
-  console.log(service);
 
   return (
     <Suspense fallback={<Loader />}>

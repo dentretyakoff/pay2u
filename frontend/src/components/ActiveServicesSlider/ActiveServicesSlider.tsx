@@ -7,13 +7,13 @@ import "swiper/scss";
 import "./ActiveServicesSlider.scss";
 
 export const ActiveServicesSlider = memo(() => {
-  const { data: userSubs, error, isFetching } = useGetMySubscriptionsQuery();
+  const { data: userSubs } = useGetMySubscriptionsQuery();
 
   return (
     <section className="ActiveServicesSliderWrapper">
       <div className="ActiveServicesSliderTitleContainer">
         <h2 className="ActiveServicesSliderTitle">Мои подключенные сервисы</h2>
-        <Link to={"/"} className="ActiveServicesSliderLink">
+        <Link to="/" className="ActiveServicesSliderLink">
           Все
         </Link>
       </div>

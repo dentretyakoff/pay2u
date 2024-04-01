@@ -6,7 +6,6 @@ import { ServicesCategories } from "components/ServicesCategories/ServicesCatego
 import { ServicesList } from "components/ServicesList/ServicesList";
 import { SliderOnboarding } from "components/SliderOnboarding/SliderOnboarding";
 import { useEffect } from "react";
-import { useGetCategoriesQuery } from "services/CategoriesService";
 import {
   useGetFindServicesQuery,
   useGetServicesQuery,
@@ -22,18 +21,20 @@ const MainPage = () => {
 
   const {
     data: searchResults,
-    isFetching: searchFetching,
-    refetch,
+    // isFetching: searchFetching,
   } = useGetFindServicesQuery(query, { skip: query === "" });
 
-  const { data: allServices = [], error, isFetching } = useGetServicesQuery();
+  const { data: allServices = [],
+    // error,
+    // isFetching
+  } = useGetServicesQuery();
 
   const servicesList = !query ? allServices : searchResults;
 
   return (
     <main>
       <Header path="/" title="Развлекательные сервисы" />
-      <SearchBar onSearch={() => {}} />
+      <SearchBar />
       {!query && (
         <>
           <SliderOnboarding slidesData={sliderOnboardingData} />

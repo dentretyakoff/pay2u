@@ -8,13 +8,10 @@ import all from "shared/assets/icons/all-icon.svg";
 import "swiper/scss";
 import "./ServicesCategories.scss";
 
-interface ServicesCategoriesProps {}
-
 export const ServicesCategories = memo(() => {
   const {
     data: categories = [],
     error = {},
-    isFetching,
   } = useGetCategoriesQuery();
 
   const sllicedData = categories?.slice(0, 5);
