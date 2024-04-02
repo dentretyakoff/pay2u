@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { IMySubscription } from "models/IMySubscription";
+// import { getWordEnding } from "shared/lib/getWordEnding";
 import { getWordEnding } from "shared/lib/getWordEnding";
 import cls from "./ActiveServiceCard.module.scss";
 

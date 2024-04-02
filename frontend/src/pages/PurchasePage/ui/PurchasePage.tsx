@@ -4,6 +4,7 @@ import { Header } from "components/Header/Header";
 import { Loader } from "widgets/Loader/Loader";
 import { useGetSeparateServiceQuery } from "services/ServicesService";
 import { PurchaseGuideDialog } from "components/PurchaseGuideDialog/PurchaseGuideDialog";
+import sbp from "shared/assets/icons/logo-sbp.svg";
 import cls from "./PurchasePage.module.scss";
 
 const PurchasePage = memo(() => {
@@ -31,12 +32,18 @@ const PurchasePage = memo(() => {
         <p className={cls.subscription}>{chosenPlan?.name}</p>
         <div className={cls.priceContainer}>
           <p className={cls.price}>{chosenPlan?.price} ₽</p>
-          <p className={cls.cashback}>
-            Кешбэк {cashbackPercentage}₽
-          </p>
+          <p className={cls.cashback}>Кешбэк {cashbackPercentage}₽</p>
         </div>
         <p className={cls.paymentMethod}>СПОСОБ ОПЛАТЫ</p>
+        <div className={cls.methodItem}>
+          <img src={sbp} alt="sbp logo" />
+          <p>Система быстрых платежей</p>
+        </div>
         <PurchaseGuideDialog />
+        <div className={cls.customCheckbox}>
+          <input type="checkbox" id="custom-checkbox-1" />
+          <label htmlFor="custom-checkbox-1"/>
+        </div>
       </main>
     </Suspense>
   );

@@ -30,7 +30,7 @@ export const PurchaseGuideDialog = memo(() => {
   return (
     <>
       <button type="button" onClick={handleClickOpen} className={cls.button}>
-        Как подключить?
+        Как это работает?
       </button>
       <Dialog
         // fullScreen
@@ -46,7 +46,7 @@ export const PurchaseGuideDialog = memo(() => {
           },
           "& .MuiDialog-container": {
             display: "block !important",
-            marginTop: "200px",
+            marginTop: "190px",
           },
         }}
       >
