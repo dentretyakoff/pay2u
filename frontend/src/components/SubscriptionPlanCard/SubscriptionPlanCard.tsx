@@ -18,7 +18,10 @@ export const SubscriptionPlanCard = memo(
         <p className={cls.price}>
           <span>{plan.price}₽ </span>в месяц
         </p>
-        <Link to="/" className={cls.button}>
+        <Link
+          to={`/services/${plan.service}/subscription/${plan.id}`}
+          className={cls.button}
+        >
           Подключить
         </Link>
       </div>
