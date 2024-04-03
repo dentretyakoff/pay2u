@@ -1,24 +1,14 @@
 import { memo } from "react";
 import { Link } from "react-router-dom";
 import { IMySubscription } from "models/IMySubscription";
-// import { getWordEnding } from "shared/lib/getWordEnding";
 import { getWordEnding } from "shared/lib/getWordEnding";
 import cls from "./ActiveServiceCard.module.scss";
 
 interface ActiveServiceCardProps {
-  // id: number;
-  // logo: string;
-  // name: string;
-  // cashback: number;
-  // color: string;
-  // created?: string;
-  // rating?: number;
-  // category?: number;
   data: IMySubscription;
 }
 
 export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
-  // const { logo, name, cashback, color, id, category = 0, created = "", rating = 0 } = props;
   const { data: sub } = props;
 
   const date = new Date(sub.end_date).toLocaleDateString();
