@@ -41,7 +41,7 @@ const PurchasePage = memo(() => {
             <div className={cls.priceContainer}>
               <p className={cls.price}>{chosenPlan?.price} ₽</p>
               <p className={cls.cashback}>
-                Кешбэк {cashbackPercentage}
+                Кешбэк {cashbackPercentage.toFixed(1)}
                 <img src={ruble} alt="ruble" />
               </p>
             </div>
