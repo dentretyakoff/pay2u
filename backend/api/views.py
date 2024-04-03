@@ -159,7 +159,7 @@ class PaymentListViewSet(mixins.ListModelMixin,
     """Получает чеки пользователя."""
     queryset = (Payment.objects
                 .select_related('user_subscription__subscription__service')
-                .all())
+                .order_by('-date').all())
     serializer_class = PaymentSerializer
 
     def get_queryset(self):
