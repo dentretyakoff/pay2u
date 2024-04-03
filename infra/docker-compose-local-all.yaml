@@ -2,44 +2,45 @@ version: '3.8'
 
 volumes:
   pg_data_pay2u:
+  media:
 
 services:
-  # postgres-local:
-  #   image: postgres:13.3-alpine
-  #   healthcheck:
-  #     test:
-  #       [
-  #         "CMD-SHELL",
-  #         "pg_isready -U $${POSTGRES_USER:?err} -d $${POSTGRES_DB:?err}"
-  #       ]
-  #     start_period: 30s
-  #     timeout: 10s
-  #     interval: 5s
-  #     retries: 10
-  #   restart: always
-  #   volumes:
-  #     - pg_data_pay2u:/var/lib/postgresql/data/
-  #   expose:
-  #     - 5432
-  #   env_file:
-  #     - ../.env
+  postgres-local:
+    image: postgres:13.3-alpine
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER:?err} -d $${POSTGRES_DB:?err}"
+        ]
+      start_period: 30s
+      timeout: 10s
+      interval: 5s
+      retries: 10
+    restart: always
+    volumes:
+      - pg_data_pay2u:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    env_file:
+      - ../.env
 
-  # backend:
-  #   build:
-  #     context: ../
-  #     dockerfile: backend.Dockerfile
-  #   depends_on:
-  #     postgres-local:
-  #       condition: service_healthy
-  #   ports:
-  #     - '8000:8000'
-  #   links:
-  #     - postgres-local:db
-  #   environment:
-  #     - POSTGRES_HOST=postgres-local
-  #   env_file:
-  #     - ../.env
-  #   command: bash -c ./docker-entrypoint.sh
+  backend:
+    build:
+      context: ../
+      dockerfile: backend.Dockerfile
+    depends_on:
+      postgres-local:
+        condition: service_healthy
+    volumes:
+      - media:/app/backend/media_files
+    links:
+      - postgres-local:db
+    environment:
+      - POSTGRES_HOST=postgres-local
+    env_file:
+      - ../.env
+    command: bash -c ./docker-entrypoint.sh
 
   frontend:
     build:
@@ -47,3 +48,15 @@ services:
       dockerfile: frontend.Dockerfile
     volumes:
       - ../frontend/:/app/result_build/
+
+  nginx:
+    build:
+      context: ../nginx
+      dockerfile: nginx.Dockerfile
+    ports:
+      - 8000:80
+    volumes:
+      - ../frontend/dist:/usr/share/nginx/html/
+      - media:/media_files
+    depends_on:
+      - backend
