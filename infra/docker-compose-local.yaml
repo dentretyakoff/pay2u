@@ -2,6 +2,7 @@ version: '3.8'
 
 volumes:
   pg_data_pay2u:
+  static_django:
 
 services:
   postgres-local:
@@ -31,6 +32,8 @@ services:
     depends_on:
       postgres-local:
         condition: service_healthy
+    volumes:
+      - static_django:/app/backend_static
     ports:
       - '8000:8000'
     links:
