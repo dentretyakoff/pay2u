@@ -36,5 +36,6 @@ module.exports = {
     "react/jsx-one-expression-per-line": "off",
     "operator-linebreak": "off",
     "no-else-return": "off",
+    "jsx-a11y/label-has-associated-control": "off",
   },
 };

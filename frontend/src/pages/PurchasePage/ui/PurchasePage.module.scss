@@ -1,0 +1,32 @@
+.customCheckbox {
+    display: flex;
+    align-items: center;
+  }
+  
+  .customCheckbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .customCheckbox label {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+    transition: border-color 0.25s;
+  }
+  
+  .customCheckbox input[type="checkbox"]:checked + label::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 14px;
+    height: 11px;
+    background-image: url('shared/assets/icons/vector.svg');
+  }
+  
+  .customCheckbox input[type="checkbox"]:checked + label {
+    background-color: var(--accent-color);
+  }
