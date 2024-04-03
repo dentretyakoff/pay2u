@@ -3,6 +3,7 @@ version: '3.8'
 volumes:
   pg_data_pay2u:
   media:
+  static_django:
 
 services:
   postgres-local:
@@ -33,6 +34,7 @@ services:
       postgres-local:
         condition: service_healthy
     volumes:
+      - static_django:/backend_static
       - media:/app/backend/media_files
     links:
       - postgres-local:db
@@ -57,6 +59,7 @@ services:
       - 8000:80
     volumes:
       - ../frontend/dist:/usr/share/nginx/html/
+      - static_django:/backend_static/
       - media:/media_files
     depends_on:
       - backend
