@@ -1,1 +1,1 @@
-export const BASE_URL = "http://localhost:8000/api";
+export const { VITE_BASE_URL: BASE_URL } = import.meta.env;

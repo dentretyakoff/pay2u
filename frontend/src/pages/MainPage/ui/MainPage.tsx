@@ -16,7 +16,7 @@ import { useAppSelector } from "shared/hooks/redux";
 const MainPage = () => {
   const query = useAppSelector((state) => state.search.query);
   useEffect(() => {
-    localStorage.setItem("token", "9228db1e926465fd7e6dd5d7526dc072ad05132d");
+    localStorage.setItem("token", import.meta.env.VITE_TOKEN || "");
   }, []);
 
   const {
