@@ -1,51 +1,322 @@
 [
-    {
+  {
       "name": "Иви 1",
-      "description": "Описание Иви 1",
+      "description": "Описание Иви подписка на 1 месяц",
       "price": 300,
       "months": 1,
       "service_id": 1,
       "cashback": 10
-    },
-    {
-      "name": "Подписка на 1 месяц",
-      "description": "Описание Окко Подписка на 1 месяц",
+  },
+  {
+      "name": "Иви 3",
+      "description": "Описание Иви подписка на 3 месяца",
+      "price": 870,
+      "months": 3,
+      "service_id": 1,
+      "cashback": 10
+  },
+  {
+      "name": "Иви 6",
+      "description": "Описание Иви подписка на 6 месяцев",
+      "price": 1716,
+      "months": 6,
+      "service_id": 1,
+      "cashback": 10
+  },
+  {
+      "name": "Иви 12",
+      "description": "Описание Иви 12 подписка на 12 месяцев",
+      "price": 3384,
+      "months": 12,
+      "service_id": 1,
+      "cashback": 10
+  },
+  {
+      "name": "Окко 1",
+      "description": "Описание Окко подписка на 1 месяц",
       "price": 400,
       "months": 1,
       "service_id": 3,
       "cashback": 15
-    },
-    {
-      "name": "Подписка на 1 месяц",
-      "description": "Описание Яндекс Плюс Подписка на 1 месяц",
+  },
+  {
+      "name": "Окко 3",
+      "description": "Описание Окко подписка на 3 месяца",
+      "price": 1170,
+      "months": 3,
+      "service_id": 3,
+      "cashback": 15
+  },
+  {
+      "name": "Окко 6",
+      "description": "Описание Окко подписка на 6 месяцев",
+      "price": 2310,
+      "months": 6,
+      "service_id": 3,
+      "cashback": 15
+  },
+  {
+      "name": "Окко 12",
+      "description": "Описание Окко подписка на 12 месяцев",
+      "price": 4560,
+      "months": 12,
+      "service_id": 3,
+      "cashback": 15
+  },
+  {
+      "name": "Яндекс Плюс 1",
+      "description": "Описание Яндекс Плюс подписка на 1 месяц",
       "price": 270,
       "months": 1,
       "service_id": 2,
       "cashback": 10
-    },
-    {
-      "name": "Подписка на 3 месяца",
+  },
+  {
+      "name": "Яндекс Плюс 3",
       "description": "Описание Яндекс Плюс Подписка на 3 месяца",
       "price": 801,
       "months": 3,
       "service_id": 2,
+      "cashback": 15
+  },
+  {
+      "name": "Яндекс Плюс 6",
+      "description": "Описание Яндекс Плюс Подписка на 6 месяцев",
+      "price": 1560,
+      "months": 6,
+      "service_id": 2,
+      "cashback": 15
+  },
+  {
+      "name": "Яндекс Плюс 12",
+      "description": "Описание Яндекс Плюс Подписка на 12 месяцев",
+      "price": 3000,
+      "months": 12,
+      "service_id": 2,
       "cashback": 20
-    },
-    {
-      "name": "Подписка на 1 месяц",
+  },
+  {
+      "name": "Spotify 1",
+      "description": "Описание Spotify Подписка на 1 месяц",
+      "price": 500,
+      "months": 1,
+      "service_id": 8,
+      "cashback": 5
+  },
+  {
+      "name": "Spotify 3",
+      "description": "Описание Spotify Подписка на 3 месяца",
+      "price": 1470,
+      "months": 3,
+      "service_id": 8,
+      "cashback": 5
+  },
+  {
+      "name": "Spotify 6",
+      "description": "Описание Spotify Подписка на 6 месяцев",
+      "price": 2820,
+      "months": 6,
+      "service_id": 8,
+      "cashback": 5
+  },
+  {
+      "name": "Spotify 12",
+      "description": "Описание Spotify Подписка на 12 месяц",
+      "price": 5400,
+      "months": 12,
+      "service_id": 8,
+      "cashback": 5
+  },
+  {
+      "name": "MEGOGO 1",
+      "description": "Описание MEGOGO Подписка на 1 месяц",
+      "price": 350,
+      "months": 1,
+      "service_id": 4,
+      "cashback": 5
+  },
+  {
+      "name": "MEGOGO 3",
+      "description": "Описание MEGOGO Подписка на 3 месяца",
+      "price": 960,
+      "months": 3,
+      "service_id": 4,
+      "cashback": 5
+  },
+  {
+      "name": "MEGOGO 6",
+      "description": "Описание MEGOGO Подписка на 6 месяцев",
+      "price": 1800,
+      "months": 6,
+      "service_id": 4,
+      "cashback": 5
+  },
+  {
+      "name": "MEGOGO 12",
+      "description": "Описание MEGOGO Подписка на 12 месяцев",
+      "price": 3480,
+      "months": 12,
+      "service_id": 4,
+      "cashback": 5
+  },
+  {
+      "name": "Zoom Class 1",
+      "description": "Описание Zoom Class Подписка на 1 месяц",
+      "price": 190,
+      "months": 1,
+      "service_id": 10,
+      "cashback": 5
+  },
+  {
+      "name": "Zoom Class 3",
+      "description": "Описание Zoom Class Подписка на 3 месяца",
+      "price": 555,
+      "months": 3,
+      "service_id": 10,
+      "cashback": 5
+  },
+  {
+      "name": "Zoom Class 6",
+      "description": "Описание Zoom Class Подписка на 6 месяцев",
+      "price": 1092,
+      "months": 6,
+      "service_id": 10,
+      "cashback": 5
+  },
+  {
+      "name": "Zoom Class 12",
+      "description": "Описание Zoom Class Подписка на 12 месяцев",
+      "price": 2136,
+      "months": 12,
+      "service_id": 10,
+      "cashback": 10
+  },
+  {
+      "name": "ЛитРес 1",
+      "description": "Описание ЛитРес Подписка на 1 месяц",
+      "price": 399,
+      "months": 1,
+      "service_id": 6,
+      "cashback": 20
+  },
+  {
+      "name": "ЛитРес 3",
+      "description": "Описание ЛитРес Подписка на 3 месяца",
+      "price": 999,
+      "months": 3,
+      "service_id": 6,
+      "cashback": 20
+  },
+  {
+      "name": "ЛитРес 6",
+      "description": "Описание ЛитРес Подписка на 6 месяцев",
+      "price": 1890,
+      "months": 6,
+      "service_id": 6,
+      "cashback": 20
+  },
+  {
+      "name": "ЛитРес 12",
+      "description": "Описание ЛитРес Подписка на 12 месяцев",
+      "price": 3190,
+      "months": 12,
+      "service_id": 6,
+      "cashback": 20
+  },
+  {
+      "name": "Storytel 1",
       "description": "Описание Storytel Подписка на 1 месяц",
       "price": 200,
       "months": 1,
       "service_id": 9,
       "cashback": 10
-    },
-    {
-      "name": "Подписка на 1 месяц",
+  },
+  {
+      "name": "Storytel 3",
+      "description": "Описание Storytel Подписка на 3 месяца",
+      "price": 585,
+      "months": 3,
+      "service_id": 9,
+      "cashback": 10
+  },
+  {
+      "name": "Storytel 6",
+      "description": "Описание Storytel Подписка на 6 месяца",
+      "price": 1140,
+      "months": 6,
+      "service_id": 9,
+      "cashback": 10
+  },
+  {
+      "name": "Storytel 12",
+      "description": "Описание Storytel Подписка на 12 месяца",
+      "price": 2160,
+      "months": 12,
+      "service_id": 9,
+      "cashback": 10
+  },
+  {
+      "name": "MYBOOK 1",
       "description": "Описание MYBOOK Подписка на 1 месяц",
       "price": 300,
       "months": 1,
       "service_id": 7,
       "cashback": 15
-    }
-  ]
-  
+  },
+  {
+      "name": "MYBOOK 3",
+      "description": "Описание MYBOOK Подписка на 3 месяца",
+      "price": 882,
+      "months": 3,
+      "service_id": 7,
+      "cashback": 15
+  },
+  {
+      "name": "MYBOOK 6",
+      "description": "Описание MYBOOK Подписка на 6 месяцев",
+      "price": 1734,
+      "months": 6,
+      "service_id": 7,
+      "cashback": 15
+  },
+  {
+      "name": "MYBOOK 12",
+      "description": "Описание MYBOOK Подписка на 12 месяцев",
+      "price": 3384,
+      "months": 12,
+      "service_id": 7,
+      "cashback": 15
+  },
+  {
+      "name": "Доктор Рядом 1",
+      "description": "Описание Доктор Рядом Подписка на 1 месяц",
+      "price": 450,
+      "months": 1,
+      "service_id": 5,
+      "cashback": 15
+  },
+  {
+      "name": "Доктор Рядом 3",
+      "description": "Описание Доктор Рядом Подписка на 3 месяца",
+      "price": 1260,
+      "months": 3,
+      "service_id": 5,
+      "cashback": 15
+  },
+  {
+      "name": "Доктор Рядом 6",
+      "description": "Описание Доктор Рядом Подписка на 6 месяцев",
+      "price": 2340,
+      "months": 6,
+      "service_id": 5,
+      "cashback": 15
+  },
+  {
+      "name": "Доктор Рядом 12",
+      "description": "Описание Доктор Рядом Подписка на 12 месяцев",
+      "price": 4200,
+      "months": 12,
+      "service_id": 5,
+      "cashback": 15
+  }
+]
