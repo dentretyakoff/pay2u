@@ -21,9 +21,9 @@ class ApiViewTests(APITestCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.user = User.objects.create(username='test_user')
-        token = Token.objects.create(user=cls.user)
+        cls.token = Token.objects.create(user=cls.user)
         cls.client = APIClient()
-        cls.client.credentials(HTTP_AUTHORIZATION=f'Token {token.key}')
+        cls.client.credentials(HTTP_AUTHORIZATION=f'Token {cls.token.key}')
 
         cls.category_1 = Category.objects.create(
             name='category_1',
@@ -85,6 +85,12 @@ class ApiViewTests(APITestCase):
         cls.url_my_subscription_list = reverse('usersubscription-list')
         cls.url_payment_list = reverse('payment-list')
         cls.url_payment_expenses = cls.url_payment_list + 'expenses/'
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        cls.user.delete()
+        cls.token.delete()
 
     def test_category_list_returns_all_categories(self):
         """В категориях возвращаются все категории."""
@@ -229,11 +235,12 @@ class ApiViewTests(APITestCase):
         self.assertEqual(len(response.data), 0)
 
     def test_service_list_category_filter(self):
+        """В сервисах работает фильтр по категории."""
         response = self.__class__.client.get(
-            self.url_service_list + '?category_id=1')
+            self.url_service_list + f'?category_id={self.category_1.id}')
         self.assertEqual(len(response.data), 2)
         response = self.__class__.client.get(
-            self.url_service_list + '?category_id=2')
+            self.url_service_list + f'?category_id={self.category_2.id}')
         self.assertEqual(len(response.data), 0)
 
     def test_service_detail_returns_correct_fields(self):
@@ -241,7 +248,7 @@ class ApiViewTests(APITestCase):
         response = self.__class__.client.get(self.url_service_detail)
         expected_fields = {
             'id', 'subscriptions', 'is_favorited', 'name', 'description',
-            'image_card', 'category'
+            'image', 'image_card', 'category'
         }
         self.assertEqual(set(response.data), expected_fields)
         subscriptions = response.data.get('subscriptions')
@@ -259,7 +266,7 @@ class ApiViewTests(APITestCase):
             'is_favorited': False,
             'description': 'service_description_1',
             'image_card': f'http://testserver{settings.MEDIA_URL}service_card_1.png',   # noqa,
-            'category': 1
+            'category': self.category_1.id
         }
         self.assertDictContainsSubset(expected_data, response.data)
         subscription = response.data.get('subscriptions')[0]
