@@ -1,16 +1,49 @@
 import { memo } from "react";
 import { useGetCategoriesQuery } from "services/CategoriesService";
+import {
+  useGetFavoritesQuery,
+  useGetNewServicesQuery,
+} from "services/ServicesService";
 import { CategoryDialog } from "components/CategoryDialog/CategoryDialog";
-import favorites from "shared/assets/icons/favorites-icon.svg";
-import news from "shared/assets/icons/new-icon.svg";
+import favoritesIcon from "shared/assets/icons/favorites-icon.svg";
+import newsIcon from "shared/assets/icons/new-icon.svg";
 import cls from "./AllCategoriesDialog.module.scss";
 
 export const AllCategoriesDialog = memo(() => {
   const { data: categories = [] } = useGetCategoriesQuery();
+  const { data: favorite = [] } = useGetFavoritesQuery();
+  const { data: news = [] } = useGetNewServicesQuery();
+
   return (
     <div className={cls.wrapper}>
-      <CategoryDialog name="Избранное" logo={favorites} category="Избранное" direction="row" />
-      <CategoryDialog name="Новые" logo={news} category="Новые" direction="row" />
+      <div className={cls.category}>
+        <CategoryDialog
+          name="Избранное"
+          logo={favoritesIcon}
+          category="Избранное"
+          direction="row"
+        />
+        <p
+          className={cls.counter}
+          style={{ display: favorite?.length ? "block" : "none" }}
+        >
+          {favorite?.length}
+        </p>
+      </div>
+      <div className={cls.category}>
+        <CategoryDialog
+          name="Новые"
+          logo={newsIcon}
+          category="Новые"
+          direction="row"
+        />
+        <p
+          className={cls.counter}
+          style={{ display: news?.length ? "block" : "none" }}
+        >
+          {news?.length}
+        </p>
+      </div>
       {categories?.map((category) => (
         <div key={category.id} className={cls.category}>
           <CategoryDialog
