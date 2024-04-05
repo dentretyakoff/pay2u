@@ -21,7 +21,7 @@ export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.SERVICE_OVERVIEW]: "/services/:id",
   [AppRoutes.SUBSCRIPTION_PURCHASE]:
     "/services/:id/subscription/:subscriptionId",
-  [AppRoutes.MY_SUBSCRIPTIONS]: "/my_subscriptions",
+  [AppRoutes.MY_SUBSCRIPTIONS]: "/my-subscriptions",
   //   [AppRoutes.ACTIVE_SERVICE_INFO]: "/active_service_info",
   [AppRoutes.NOT_FOUND]: "*",
 };

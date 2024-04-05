@@ -1,0 +1,20 @@
+.MuiTabs-flexContainer {
+  gap: 120px;
+  justify-content: space-between;
+}
+
+.MuiTabs-indicator {
+  display: none;
+}
+
+.MuiButtonBase-root {
+  font-size: var(--font-size-m) !important;
+  font-family: var(--font-fimily-main) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  letter-spacing: 0 !important;
+  color: rgba(137, 135, 135, 1) !important;
+}
+
+.Mui-selected {
+  color: var(--primary-color) !important;
+}

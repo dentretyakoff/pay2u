@@ -20,4 +20,6 @@
   font-size: var(--font-size-xs);
   line-height: var(--font-line-xs);
   color: var(--primary-color);
+  flex-grow: 1;
+  text-align: end;
 }
