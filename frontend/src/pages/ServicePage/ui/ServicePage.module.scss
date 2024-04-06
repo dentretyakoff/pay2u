@@ -2,11 +2,42 @@
   margin-bottom: 20px;
 }
 
-.image {
+.imageContainer {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.positionContainer {
+  position: relative;
+  width: 345px;
+}
+
+.image {
+  width: 345px;
   height: 176px;
   border-radius: 20px;
-  object-fit: fill;
+  object-fit: contain;
+}
+
+.like {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  background: rgba(97, 97, 97, 0.6);
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+
+  img {
+    width: 24px;
+    height: 24px;
+    
+  }
 }
 
 .title {
@@ -20,3 +51,4 @@
   font-size: var(--font-size-m);
   line-height: var(--font-line-l);
 }
+

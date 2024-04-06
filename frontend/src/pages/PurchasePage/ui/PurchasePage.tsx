@@ -1,16 +1,19 @@
 import { Suspense, memo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Header } from "components/Header/Header";
 import { Loader } from "widgets/Loader/Loader";
 import { useGetSeparateServiceQuery } from "services/ServicesService";
 import { PurchaseGuideDialog } from "components/PurchaseGuideDialog/PurchaseGuideDialog";
+import { useAddSubscriptionMutation } from "services/MySubscriptions";
 import sbp from "shared/assets/icons/logo-sbp.svg";
 import ruble from "shared/assets/icons/ruble-sign.svg";
 import cls from "./PurchasePage.module.scss";
 
 const PurchasePage = memo(() => {
+  const navigate = useNavigate();
   const { id, subscriptionId } = useParams();
   const { data: service } = useGetSeparateServiceQuery(id || "");
+  const [addSubscription] = useAddSubscriptionMutation();
 
   const [isAgreed, setIsAgreed] = useState(false);
 
@@ -23,8 +26,13 @@ const PurchasePage = memo(() => {
       ? chosenPlan.price / chosenPlan.cashback
       : 0;
 
-  const handleClick = () => {
+  const handleClick = (): void => {
     setIsAgreed(!isAgreed);
+  };
+
+  const handleSubcribe = (): void => {
+    addSubscription(chosenPlan?.id || 0);
+    navigate("/my-subscriptions");
   };
 
   return (
@@ -66,7 +74,12 @@ const PurchasePage = memo(() => {
             </div>
           </div>
           <div className={cls.lowerPart}>
-            <button disabled={!isAgreed} type="button" className={cls.button}>
+            <button
+              disabled={!isAgreed}
+              type="button"
+              className={cls.button}
+              onClick={handleSubcribe}
+            >
               К выбору счета
             </button>
             <Link to="/" className={cls.link}>
