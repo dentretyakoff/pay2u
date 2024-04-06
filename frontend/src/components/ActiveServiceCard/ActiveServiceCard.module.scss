@@ -1,11 +1,28 @@
+.ActiveServiceCardHome,
 .ActiveServiceCard {
-  display: block;
-  width: 183px;
-  color: var(--primary-color);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 12px;
   margin: 0 4px 4px 3px;
+}
+
+.ActiveServiceCardHome {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  display: block;
+  width: 183px;
+  color: var(--primary-color);
+}
+
+.ActiveServiceCard {
+  margin: 12px 0 0 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  color: var(--secondary-color);
+}
+
+.logoNameContainer {
+  display: flex;
+  gap: 16px;
 }
 
 .innerContainer {
@@ -20,14 +37,18 @@
   border-radius: 50%;
 }
 
-.price {
+.priceHome, .price {
   font-size: var(--font-size-l);
   line-height: var(--font-line-xl);
   font-weight: var(--font-weight-semibold);
   text-align: end;
 }
 
-.duaration {
+.price {
+  font-size: var(--font-size-s);
+}
+
+.duarationHome, .duaration {
   font-size: var(--font-size-xs);
   line-height: var(--font-line-xs);
   color: var(--gray-text);
@@ -46,9 +67,13 @@
   line-height: var(--font-line-s);
 }
 
-.endTime {
+.endTimeHome, .endTime {
   font-size: var(--font-size-xs);
   line-height: var(--font-line-s);
   color: #721bb7;
   white-space: nowrap;
+}
+
+.endTime, .duaration {
+  color: rgba(251, 202, 202, 1);
 }

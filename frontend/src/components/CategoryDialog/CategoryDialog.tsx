@@ -38,9 +38,7 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
 
   const [open, setOpen] = useState(false);
 
-  const {
-    data: favorites,
-  } = useGetFavoritesQuery(undefined, {
+  const { data: favorites } = useGetFavoritesQuery(undefined, {
     skip: category !== "Избранное",
   });
 
@@ -68,7 +66,10 @@ export const CategoryDialog = memo((props: CategoryDialogProps) => {
         type="button"
         onClick={handleClickOpen}
         className={cls.ServicesCategoriesCard}
-        style={{ flexDirection: direction }}
+        style={{
+          flexDirection: direction,
+          width: direction === "column" ? 74 : "-webkit-fill-available",
+        }}
       >
         <img
           src={logo}

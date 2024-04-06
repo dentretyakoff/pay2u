@@ -1,4 +1,5 @@
 import { MainPage } from "pages/MainPage";
+import { MySubscriptionsPage } from "pages/MySubscriptionsPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { PurchasePage } from "pages/PurchasePage";
 import { ServicePage } from "pages/ServicePage";
@@ -8,7 +9,7 @@ export enum AppRoutes {
   MAIN = "main",
   SERVICE_OVERVIEW = "service_overview",
   SUBSCRIPTION_PURCHASE = "subscription_purchase",
-  //   ACTIVE_SERVICES = "active_services",
+  MY_SUBSCRIPTIONS = "my_subscriptions",
   //   ACTIVE_SERVICE_INFO = "active_service_info",
 
   // last
@@ -20,7 +21,7 @@ export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.SERVICE_OVERVIEW]: "/services/:id",
   [AppRoutes.SUBSCRIPTION_PURCHASE]:
     "/services/:id/subscription/:subscriptionId",
-  //   [AppRoutes.ACTIVE_SERVICES]: "/active_services",
+  [AppRoutes.MY_SUBSCRIPTIONS]: "/my-subscriptions",
   //   [AppRoutes.ACTIVE_SERVICE_INFO]: "/active_service_info",
   [AppRoutes.NOT_FOUND]: "*",
 };
@@ -38,10 +39,10 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
     path: RouterPath.subscription_purchase,
     element: <PurchasePage />,
   },
-  //   [AppRoutes.ACTIVE_SERVICES]: {
-  //     path: RouterPath.active_services,
-  //     element: <ActiveServicesPage />,
-  //   },
+  [AppRoutes.MY_SUBSCRIPTIONS]: {
+    path: RouterPath.my_subscriptions,
+    element: <MySubscriptionsPage />,
+  },
   //   [AppRoutes.ACTIVE_SERVICE_INFO]: {
   //     path: RouterPath.active_service_info,
   //     element: <ActiveServiceInfoPage />,

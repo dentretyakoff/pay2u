@@ -13,7 +13,7 @@ export const ActiveServicesSlider = memo(() => {
     <section className="ActiveServicesSliderWrapper">
       <div className="ActiveServicesSliderTitleContainer">
         <h2 className="ActiveServicesSliderTitle">Мои подключенные сервисы</h2>
-        <Link to="/" className="ActiveServicesSliderLink">
+        <Link to="/my-subscriptions" className="ActiveServicesSliderLink">
           Все
         </Link>
       </div>
@@ -22,6 +22,7 @@ export const ActiveServicesSlider = memo(() => {
           <SwiperSlide key={sub.id}>
             <ActiveServiceCard
               data={sub}
+              homepage
             />
           </SwiperSlide>
         ))}
