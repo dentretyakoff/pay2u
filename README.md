@@ -84,7 +84,7 @@ docker compose -f infra/docker-compose-local-all.yaml up -d --build
 [Иван Павлов](https://github.com/ivnpvl)
 
 
-## Описание Backend <a id="desc-frontend"></a>
+## Описание Frontend <a id="desc-frontend"></a>
 
 
 ### Стек технологий <a id="stack-frontend"></a>
