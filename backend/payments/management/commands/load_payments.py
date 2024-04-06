@@ -28,7 +28,9 @@ class Command(BaseCommand):
                     UserSubscription.objects.get_or_create(
                         start_date=datetime.fromisoformat(user_sub_data['start_date']),  # noqa
                         user=user,
-                        subscription_id=user_sub_data['subscription_id'])
+                        subscription_id=user_sub_data['subscription_id'],
+                        status=user_sub_data['status'],
+                        renewal_status=user_sub_data['renewal_status'])
             self.stdout.write(self.style.SUCCESS(
                 'Подписки пользователя загружены.'))
 
