@@ -11,7 +11,7 @@
     - [Команда](#team-frontend)
 
 ## Описание <a id="desc"></a>
-Сервис позволяет пользователям следить за своими подписками на развлекательные сервисы.
+Сервис позволяет пользователям следить за своими подписками на развлекательные сервисы. Подписки разбиты на категории для простоты навигации. Пользователь может подключать новые и продлять старые подписки, добавлять понравившееся в избранное. Есть опция учёта расходов и начисленного кэшбека.
 
 url-адрес: https://pay2u.zapto.org/
 
@@ -52,14 +52,14 @@ sudo apt-get install docker-compose-plugin
 ```
 5. Запустите проект
 ```
-docker compose -f infra/docker-compose-local-all.yaml up -d --build
+sudo docker compose -f infra/docker-compose-local-all.yaml up -d --build
 ```
 
 ### Запуск всего проекта в контейнерах на сервере  <a id="all-local-server"></a>
 Выполните шаги 1-4 из [Запуск всего проекта в контейнерах(локально)](#all-local)
 
 1. Установите nginx `sudo apt install nginx -y`
-2. Скорректируйте конфиг файл `nano /etc/nginx/sites-available/default`
+2. Скорректируйте конфиг файл `sudo nano /etc/nginx/sites-available/default`
 ```
 server {
         server_name pay2u.zapto.org;
@@ -76,7 +76,7 @@ server {
 4. Запустите генерацию сертификата `sudo certbot --nginx `
 5. Запустите проект
 ```
-docker compose -f infra/docker-compose-local-all.yaml up -d --build
+sudo docker compose -f infra/docker-compose-local-all.yaml up -d --build
 ```
 
 ### Команда <a id="team-backend"></a>
