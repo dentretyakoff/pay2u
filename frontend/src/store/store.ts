@@ -3,11 +3,9 @@ import { categoriesAPI } from "services/CategoriesService";
 import { servicesAPI } from "services/ServicesService";
 import { mySubscriptionsAPI } from "services/MySubscriptions";
 import { paymentsAPI } from "services/PaymentsService";
-// import userReducer from "./reducers/UserSlice";
 import { searchReducer as searchSlice } from "./reducers/searchSlice";
 
 const rootReducer = combineReducers({
-  // userReducer,
   search: searchSlice,
   [categoriesAPI.reducerPath]: categoriesAPI.reducer,
   [servicesAPI.reducerPath]: servicesAPI.reducer,

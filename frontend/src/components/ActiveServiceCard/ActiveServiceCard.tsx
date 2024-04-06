@@ -7,10 +7,11 @@ import cls from "./ActiveServiceCard.module.scss";
 interface ActiveServiceCardProps {
   data: IMySubscription;
   homepage?: boolean;
+  inactive?: boolean;
 }
 
 export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
-  const { data: sub, homepage = false } = props;
+  const { data: sub, homepage = false, inactive = false } = props;
 
   const date = new Date(sub.end_date).toLocaleDateString();
 
@@ -27,7 +28,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
           <div className={cls.innerContainer}>
             <img src={sub.service_image} alt="logo" className={cls.logo} />
             <div className={cls.priceContainer}>
-              <p className={cls.price}>{`${sub.subscription_price} RUB`}</p>
+              <p className={cls.priceHome}>{`${sub.subscription_price} ₽`}</p>
               <p className={cls.duarationHome}>
                 за {sub.subscription_months} {wordEnding}
               </p>
@@ -35,7 +36,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
           </div>
           <p className={cls.title}>{sub.service_name}</p>
           <p className={cls.option}>{sub.subscription_name}</p>
-          <p className={cls.endTimeHome}>Действует до: {date}</p>
+          <p className={cls.endTimeHome}>{inactive ? "Срок действия истек:" : "Действует до:"} {date}</p>
         </>
       ) : (
         <>
@@ -48,7 +49,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
             </div>
           </div>
           <div className={cls.priceContainer}>
-            <p className={cls.price}>{`${sub.subscription_price} RUB`}</p>
+            <p className={cls.price}>{`${sub.subscription_price} ₽`}</p>
             <p className={cls.duaration}>
               за {sub.subscription_months} {wordEnding}
             </p>

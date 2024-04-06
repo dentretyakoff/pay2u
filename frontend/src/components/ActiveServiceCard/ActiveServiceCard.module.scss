@@ -1,19 +1,19 @@
 .ActiveServiceCardHome,
 .ActiveServiceCard {
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
   padding: 12px;
   margin: 0 4px 4px 3px;
 }
 
 .ActiveServiceCardHome {
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   display: block;
   width: 183px;
   color: var(--primary-color);
 }
 
 .ActiveServiceCard {
-  margin-top: 12px;
+  margin: 12px 0 0 0;
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -37,11 +37,15 @@
   border-radius: 50%;
 }
 
-.price {
+.priceHome, .price {
   font-size: var(--font-size-l);
   line-height: var(--font-line-xl);
   font-weight: var(--font-weight-semibold);
   text-align: end;
+}
+
+.price {
+  font-size: var(--font-size-s);
 }
 
 .duarationHome, .duaration {
