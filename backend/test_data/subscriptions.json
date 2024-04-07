@@ -1,6 +1,6 @@
 [
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Иви 1",
         "price": 300,
         "months": 1,
@@ -8,7 +8,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Иви 3",
         "price": 870,
         "months": 3,
@@ -16,7 +16,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Иви 6",
         "price": 1716,
         "months": 6,
@@ -24,7 +24,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Иви 12",
         "price": 3384,
         "months": 12,
@@ -32,7 +32,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Окко 1",
         "price": 400,
         "months": 1,
@@ -40,7 +40,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Окко 3",
         "price": 1170,
         "months": 3,
@@ -48,7 +48,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Окко 6",
         "price": 2310,
         "months": 6,
@@ -56,7 +56,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Окко 12",
         "price": 4560,
         "months": 12,
@@ -64,7 +64,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Яндекс Плюс 1",
         "price": 270,
         "months": 1,
@@ -72,7 +72,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Яндекс Плюс 3",
         "price": 801,
         "months": 3,
@@ -80,7 +80,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Яндекс Плюс 6",
         "price": 1560,
         "months": 6,
@@ -88,7 +88,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Яндекс Плюс 12",
         "price": 3000,
         "months": 12,
@@ -96,7 +96,7 @@
         "cashback": 20
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Spotify 1",
         "price": 500,
         "months": 1,
@@ -104,7 +104,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Spotify 3",
         "price": 1470,
         "months": 3,
@@ -112,7 +112,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Spotify 6",
         "price": 2820,
         "months": 6,
@@ -120,7 +120,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Spotify 12",
         "price": 5400,
         "months": 12,
@@ -128,7 +128,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "MEGOGO 1",
         "price": 350,
         "months": 1,
@@ -136,7 +136,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "MEGOGO 3",
         "price": 960,
         "months": 3,
@@ -144,7 +144,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "MEGOGO 6",
         "price": 1800,
         "months": 6,
@@ -152,7 +152,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "MEGOGO 12",
         "price": 3480,
         "months": 12,
@@ -160,7 +160,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Zoom Class 1",
         "price": 190,
         "months": 1,
@@ -168,7 +168,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Zoom Class 3",
         "price": 555,
         "months": 3,
@@ -176,7 +176,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Zoom Class 6",
         "price": 1092,
         "months": 6,
@@ -184,7 +184,7 @@
         "cashback": 5
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Zoom Class 12",
         "price": 2136,
         "months": 12,
@@ -192,7 +192,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "ЛитРес 1",
         "price": 399,
         "months": 1,
@@ -200,7 +200,7 @@
         "cashback": 20
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "ЛитРес 3",
         "price": 999,
         "months": 3,
@@ -208,7 +208,7 @@
         "cashback": 20
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "ЛитРес 6",
         "price": 1890,
         "months": 6,
@@ -216,7 +216,7 @@
         "cashback": 20
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "ЛитРес 12",
         "price": 3190,
         "months": 12,
@@ -224,7 +224,7 @@
         "cashback": 20
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Storytel 1",
         "price": 200,
         "months": 1,
@@ -232,7 +232,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Storytel 3",
         "price": 585,
         "months": 3,
@@ -240,7 +240,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Storytel 6",
         "price": 1140,
         "months": 6,
@@ -248,7 +248,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Storytel 12",
         "price": 2160,
         "months": 12,
@@ -256,7 +256,7 @@
         "cashback": 10
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "MYBOOK 1",
         "price": 300,
         "months": 1,
@@ -264,7 +264,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "MYBOOK 3",
         "price": 882,
         "months": 3,
@@ -272,7 +272,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "MYBOOK 6",
         "price": 1734,
         "months": 6,
@@ -280,7 +280,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "MYBOOK 12",
         "price": 3384,
         "months": 12,
@@ -288,7 +288,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Лайт",
+        "name": "Подписка на 1 месяц",
         "description": "Доктор Рядом 1",
         "price": 450,
         "months": 1,
@@ -296,7 +296,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Медиум",
+        "name": "Подписка на 3 месяца",
         "description": "Доктор Рядом 3",
         "price": 1260,
         "months": 3,
@@ -304,7 +304,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Оптимум",
+        "name": "Подписка на 6 месяцев",
         "description": "Доктор Рядом 6",
         "price": 2340,
         "months": 6,
@@ -312,7 +312,7 @@
         "cashback": 15
     },
     {
-        "name": "Подписка Максимум",
+        "name": "Подписка на 12 месяцев",
         "description": "Доктор Рядом 12",
         "price": 4200,
         "months": 12,
