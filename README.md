@@ -39,7 +39,7 @@ git clone git@github.com:KiryhaUdmurt/pay2u.git
 2. Заполните `.env` в корне проекта по примеру `.env.example`
 3. Заполните `.env` в каталоге `frontend`
 ```
-VITE_BASE_URL=http://localhost:8000/api/v1/
+VITE_BASE_URL=http://localhost/api/v1/
 VITE_TOKEN=9228db1e926465fd7e6dd5d7526dc072ad05132d
 ```
 4. Установите Docker
@@ -76,7 +76,7 @@ server {
 4. Запустите генерацию сертификата `sudo certbot --nginx `
 5. Запустите проект
 ```
-sudo docker compose -f infra/docker-compose-local-all.yaml up -d --build
+sudo docker compose -f infra/docker-compose-all.yaml up -d --build
 ```
 
 ### Команда <a id="team-backend"></a>

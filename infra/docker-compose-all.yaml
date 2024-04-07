@@ -56,7 +56,7 @@ services:
       context: ../nginx
       dockerfile: nginx.Dockerfile
     ports:
-      - 80:80
+      - 8000:80
     volumes:
       - ../frontend/dist:/usr/share/nginx/html/
       - static_django:/backend_static/
