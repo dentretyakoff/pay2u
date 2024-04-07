@@ -19,7 +19,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
 
   return (
     <Link
-      to={"/"}
+      to={`/my-subscriptions/${sub.id}`}
       className={homepage ? cls.ActiveServiceCardHome : cls.ActiveServiceCard}
       style={{ background: homepage ? "none" : sub.service_color }}
     >

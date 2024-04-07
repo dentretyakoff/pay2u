@@ -1,4 +1,5 @@
-export const { VITE_BASE_URL: BASE_URL } = import.meta.env;
+// export const BASE_URL = "http://localhost:8000/api/v1";
+export const BASE_URL = "/api/v1";
 
 export const months = [
   "январь",

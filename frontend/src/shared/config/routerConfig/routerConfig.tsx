@@ -3,6 +3,7 @@ import { MySubscriptionsPage } from "pages/MySubscriptionsPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { PurchasePage } from "pages/PurchasePage";
 import { ServicePage } from "pages/ServicePage";
+import { SubscriptionPage } from "pages/SubscriptionPage";
 import { RouteProps } from "react-router-dom";
 
 export enum AppRoutes {
@@ -10,7 +11,7 @@ export enum AppRoutes {
   SERVICE_OVERVIEW = "service_overview",
   SUBSCRIPTION_PURCHASE = "subscription_purchase",
   MY_SUBSCRIPTIONS = "my_subscriptions",
-  //   ACTIVE_SERVICE_INFO = "active_service_info",
+  SUBSCRIPTION_INFO = "subscription_info",
 
   // last
   NOT_FOUND = "not_found",
@@ -22,7 +23,7 @@ export const RouterPath: Record<AppRoutes, string> = {
   [AppRoutes.SUBSCRIPTION_PURCHASE]:
     "/services/:id/subscription/:subscriptionId",
   [AppRoutes.MY_SUBSCRIPTIONS]: "/my-subscriptions",
-  //   [AppRoutes.ACTIVE_SERVICE_INFO]: "/active_service_info",
+  [AppRoutes.SUBSCRIPTION_INFO]: "/my-subscriptions/:subscriptionId",
   [AppRoutes.NOT_FOUND]: "*",
 };
 
@@ -43,10 +44,10 @@ export const routerConfig: Record<AppRoutes, RouteProps> = {
     path: RouterPath.my_subscriptions,
     element: <MySubscriptionsPage />,
   },
-  //   [AppRoutes.ACTIVE_SERVICE_INFO]: {
-  //     path: RouterPath.active_service_info,
-  //     element: <ActiveServiceInfoPage />,
-  //   },
+  [AppRoutes.SUBSCRIPTION_INFO]: {
+    path: RouterPath.subscription_info,
+    element: <SubscriptionPage />,
+  },
   [AppRoutes.NOT_FOUND]: {
     path: RouterPath.not_found,
     element: <NotFoundPage />,

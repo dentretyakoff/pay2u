@@ -60,7 +60,7 @@ export const HowToSubscribeDialog = memo(
               <img src={steps} alt="progress bar" />
               <ul className={cls.textList}>
                 <li className={cls.text}>
-                  Выберете подписку и тарифный план, подходящие именно вам
+                  Выберите подписку и тарифный план, подходящие именно вам
                 </li>
                 <li className={cls.text}>
                   Выберете счет, с которого хотите оплачивать подписку, для
