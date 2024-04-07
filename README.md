@@ -37,12 +37,7 @@ redoc: https://pay2u.zapto.org/redoc/
 git clone git@github.com:KiryhaUdmurt/pay2u.git
 ```
 2. Заполните `.env` в корне проекта по примеру `.env.example`
-3. Заполните `.env` в каталоге `frontend`
-```
-VITE_BASE_URL=http://localhost/api/v1/
-VITE_TOKEN=9228db1e926465fd7e6dd5d7526dc072ad05132d
-```
-4. Установите Docker
+3. Установите Docker
 ```
 sudo apt update
 sudo apt install curl
@@ -50,13 +45,13 @@ curl -fSL https://get.docker.com -o get-docker.sh
 sudo sh ./get-docker.sh
 sudo apt-get install docker-compose-plugin
 ```
-5. Запустите проект
+4. Запустите проект
 ```
 sudo docker compose -f infra/docker-compose-local-all.yaml up -d --build
 ```
 
 ### Запуск всего проекта в контейнерах на сервере  <a id="all-local-server"></a>
-Выполните шаги 1-4 из [Запуск всего проекта в контейнерах(локально)](#all-local)
+Выполните шаги 1-3 из [Запуск всего проекта в контейнерах(локально)](#all-local)
 
 1. Установите nginx `sudo apt install nginx -y`
 2. Скорректируйте конфиг файл `sudo nano /etc/nginx/sites-available/default`
