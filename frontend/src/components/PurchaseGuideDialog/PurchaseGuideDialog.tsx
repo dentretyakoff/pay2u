@@ -19,11 +19,11 @@ const Transition = forwardRef(
 export const PurchaseGuideDialog = memo(() => {
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleClickOpen = (): void => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setOpen(false);
   };
 
@@ -33,7 +33,6 @@ export const PurchaseGuideDialog = memo(() => {
         Как это работает?
       </button>
       <Dialog
-        // fullScreen
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
