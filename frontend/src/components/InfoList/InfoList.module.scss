@@ -1,0 +1,30 @@
+.InfoList {
+  margin-top: 18px;
+}
+
+.title {
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-medium);
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+  font-size: var(--font-size-s);
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--primary-color);
+  }
+
+  img {
+    width: 43px;
+    height: 24px;
+  }
+}
