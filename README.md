@@ -134,10 +134,15 @@ API будет доступно по адресу http://localhost:8000/api/v1/
 
 
 ### Стек технологий <a id="stack-frontend"></a>
-
+- [TypeScript](https://github.com/microsoft/TypeScript)
+- [React](https://github.com/facebook/react)
+- [Redux Toolkit](https://github.com/reduxjs/redux-toolkit)
+- [RTK Query](https://redux-toolkit.js.org/tutorials/rtk-query)
+- [SCSS Module](https://sass-lang.com/)
+- [Vite](https://github.com/vitejs/vite)
 
 ### Команда <a id="team-frontend"></a>
-
+[Кирилл Калинин](https://github.com/KiryhaUdmurt)
 
 
 [MIT License](https://opensource.org/licenses/MIT)
