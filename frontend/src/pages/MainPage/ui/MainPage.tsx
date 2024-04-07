@@ -5,7 +5,6 @@ import { SearchBar } from "components/SearchBar/SearchBar";
 import { ServicesCategories } from "components/ServicesCategories/ServicesCategories";
 import { ServicesList } from "components/ServicesList/ServicesList";
 import { SliderOnboarding } from "components/SliderOnboarding/SliderOnboarding";
-import { useEffect } from "react";
 import {
   useGetFindServicesQuery,
   useGetServicesQuery,
