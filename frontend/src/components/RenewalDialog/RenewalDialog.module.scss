@@ -1,0 +1,58 @@
+.button {
+  width: 100%;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-size-m);
+  padding: 14px 0;
+  margin-top: 16px;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  background: var(--btn-bc-gray);
+}
+
+.dialogWrapper {
+  padding: 16px 16px 0;
+}
+
+.top {
+  margin-top: 24px;
+  font-size: var(--font-size-l);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-line-l);
+  text-align: center;
+}
+
+.expire {
+  margin-top: 16px;
+  color: var(--gray-text);
+  font-size: var(--font-size-s);
+  text-align: center;
+}
+
+.buttons {
+  margin: 32px 0 16px;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.dialogCloseButton,
+.agreeBtn {
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--font-line-m);
+  outline: none;
+  border: none;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.dialogCloseButton {
+  background: var(--accent-color);
+  color: var(--inverted-primary-color);
+}
+
+.agreeBtn {
+  background: var(--btn-bc-gray);
+}

@@ -2,6 +2,7 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { IMySubscription } from "models/IMySubscription";
 import { getWordEnding } from "shared/lib/getWordEnding";
+// import { useAddSubscriptionMutation } from "services/MySubscriptions";
 import cls from "./ActiveServiceCard.module.scss";
 
 interface ActiveServiceCardProps {
@@ -13,13 +14,19 @@ interface ActiveServiceCardProps {
 export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
   const { data: sub, homepage = false, inactive = false } = props;
 
+  // const [addSubscription] = useAddSubscriptionMutation();
+
   const date = new Date(sub.end_date).toLocaleDateString();
 
   const wordEnding = getWordEnding(sub.subscription_months, "месяц");
 
+  // const handleResubscribe = (): void => {
+  //   addSubscription(Number(sub.id));
+  // };
+
   return (
     <Link
-      to={`/my-subscriptions/${sub.id}`}
+      to={inactive ? "/my-subscriptions" : `/my-subscriptions/${sub.id}`}
       className={homepage ? cls.ActiveServiceCardHome : cls.ActiveServiceCard}
       style={{ background: homepage ? "none" : sub.service_color }}
     >
@@ -36,7 +43,7 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
           </div>
           <p className={cls.title}>{sub.service_name}</p>
           <p className={cls.option}>{sub.subscription_name}</p>
-          <p className={cls.endTimeHome}>{inactive ? "Срок действия истек:" : "Действует до:"} {date}</p>
+          <p className={cls.endTimeHome}>Действует до: {date}</p>
         </>
       ) : (
         <>
@@ -45,7 +52,9 @@ export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
             <div className={cls.infoContainer}>
               <p className={cls.title}>{sub.service_name}</p>
               <p className={cls.option}>{sub.subscription_name}</p>
-              <p className={cls.endTime}>Действует до: {date}</p>
+              <p className={cls.endTime}>
+                {inactive ? "Подписка истекла:" : "Действует до:"} {date}
+              </p>
             </div>
           </div>
           <div className={cls.priceContainer}>

@@ -21,13 +21,17 @@ export const SimilarServices = memo(
     return (
       <section className="SimilarServices">
         <p className="title">Похожие сервисы</p>
-        <Swiper slidesPerView="auto" spaceBetween={8}>
-          {filteredSimilarServices?.map((service) => (
-            <SwiperSlide key={service.id}>
-              <ServiceCard service={service} size="small" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {filteredSimilarServices?.length ? (
+          <Swiper slidesPerView="auto" spaceBetween={8}>
+            {filteredSimilarServices?.map((service) => (
+              <SwiperSlide key={service.id}>
+                <ServiceCard service={service} size="small" />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <p className="notFound">Нет похожих сервисов</p>
+        )}
       </section>
     );
   }

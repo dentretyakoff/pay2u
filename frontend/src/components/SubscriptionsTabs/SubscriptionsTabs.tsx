@@ -1,6 +1,9 @@
 import { SyntheticEvent, memo, useState } from "react";
 import { CustomTabPanel } from "components/CustomTabPanel/CustomTabPanel";
-import { useGetMySubscriptionsQuery } from "services/MySubscriptions";
+import {
+  useGetMySubscriptionsInactiveQuery,
+  useGetMySubscriptionsQuery,
+} from "services/MySubscriptions";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./SubscriptionsTabs.scss";
@@ -8,6 +11,7 @@ import { ActiveServiceCard } from "components/ActiveServiceCard/ActiveServiceCar
 
 export const SubscriptionsTabs = memo(() => {
   const { data: userSubs = [] } = useGetMySubscriptionsQuery();
+  const { data: inactiveSubs = [] } = useGetMySubscriptionsInactiveQuery();
 
   const [value, setValue] = useState(0);
 
@@ -21,8 +25,6 @@ export const SubscriptionsTabs = memo(() => {
 
   const autoRenewal = userSubs?.filter((sub) => sub.renewal_status === true);
 
-  const disabledSubscriptions = userSubs?.filter((sub) => sub.status === false);
-
   return (
     <section>
       <Tabs value={value} onChange={handleChange} variant="fullWidth">
@@ -32,7 +34,7 @@ export const SubscriptionsTabs = memo(() => {
       <CustomTabPanel value={value} index={0}>
         {userSubs?.length ? (
           <>
-            {singleSubscription?.length && (
+            {singleSubscription && (
               <>
                 <p className="section">Разовые</p>
                 {singleSubscription?.map((sub) => (
@@ -40,7 +42,7 @@ export const SubscriptionsTabs = memo(() => {
                 ))}
               </>
             )}
-            {autoRenewal?.length && (
+            {autoRenewal && (
               <>
                 <p className="section">Автопродление</p>
                 {autoRenewal?.map((sub) => (
@@ -54,8 +56,8 @@ export const SubscriptionsTabs = memo(() => {
         )}
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        {disabledSubscriptions?.length ? (
-          disabledSubscriptions?.map((sub) => (
+        {inactiveSubs?.length ? (
+          inactiveSubs?.map((sub) => (
             <ActiveServiceCard data={sub} key={sub.id} inactive />
           ))
         ) : (

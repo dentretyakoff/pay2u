@@ -15,15 +15,11 @@ import { useAppSelector } from "shared/hooks/redux";
 const MainPage = () => {
   const query = useAppSelector((state) => state.search.query);
 
-  const {
-    data: searchResults,
-    // isFetching: searchFetching,
-  } = useGetFindServicesQuery(query, { skip: query === "" });
+  const { data: searchResults } = useGetFindServicesQuery(query, {
+    skip: query === "",
+  });
 
-  const { data: allServices = [],
-    // error,
-    // isFetching
-  } = useGetServicesQuery();
+  const { data: allServices = [] } = useGetServicesQuery();
 
   const servicesList = !query ? allServices : searchResults;
 

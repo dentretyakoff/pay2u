@@ -22,6 +22,12 @@ export const mySubscriptionsAPI = createApi({
       }),
       providesTags: ["MySubscriptions"],
     }),
+    getMySubscriptionsInactive: builder.query<IMySubscription[], void>({
+      query: () => ({
+        url: "/mysubscriptions/?status=False",
+      }),
+      providesTags: ["MySubscriptions"],
+    }),
     getMySubscription: builder.query<IMySubscription, number>({
       query: (id) => ({
         url: `/mysubscriptions/${id}/`,
@@ -57,5 +63,6 @@ export const {
   useGetMySubscriptionQuery,
   useAddRenewalMutation,
   useDeleteRenewalMutation,
-  useAddSubscriptionMutation
+  useAddSubscriptionMutation,
+  useGetMySubscriptionsInactiveQuery
 } = mySubscriptionsAPI;

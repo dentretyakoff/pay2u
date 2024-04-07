@@ -10,8 +10,8 @@ import { HowToSubscribeDialog } from "components/HowToSubscribeDialog/HowToSubsc
 import { Loader } from "widgets/Loader/Loader";
 import { SubscriptionPlans } from "components/SubscriptionPlans/SubscriptionPlans";
 import { SimilarServices } from "components/SimilarServices/SimilarServices";
-import heartEmpty from "shared/assets/icons/heart-empty.svg";
-import heartFill from "shared/assets/icons/heart-fill.svg";
+import heartEmpty from "shared/assets/icons/heart-inactive.svg";
+import heartFill from "shared/assets/icons/Vector2.png";
 import cls from "./ServicePage.module.scss";
 
 const ServicePage = memo(() => {

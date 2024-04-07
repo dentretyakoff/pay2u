@@ -24,9 +24,6 @@ export const Header = memo(
             {image}
           </button>
         )}
-        {/* <Link to={path} className={cls.link}>
-        <img src={Arrow} alt="go back arrow" />
-      </Link> */}
         <h1 className={cls.title}>{title}</h1>
       </header>
     );
