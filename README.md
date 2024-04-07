@@ -29,14 +29,14 @@ redoc: https://pay2u.zapto.org/redoc/
 Во всех случаях автоматически применяются миграции и загружаются тестовые данные из каталога `backend/test_data/`.
 
 ### Стек технологий <a id="stack-backend"></a>
- - Python 3.10
- - Poetry 1.8
- - Django 4.2
- - Django REST Framework 3.15
- - Pillow 10.2
- - Postgres 13.3
- - Nginx
- - Docker
+ - [Python 3.10](https://github.com/python/cpython/tree/3.10)
+ - [Poetry 1.8](https://github.com/python-poetry/poetry/tree/1.8)
+ - [Django 4.2](https://github.com/django/django/tree/stable/4.2.x)
+ - [Django REST Framework 3.15](https://github.com/encode/django-rest-framework)
+ - [Pillow 10.2](https://github.com/python-pillow/Pillow/tree/10.2.x)
+ - [Postgres 13.3](https://www.postgresql.org/)
+ - [Nginx](https://nginx.org/ru/)
+ - [Docker](https://www.docker.com/)
 
 ### Запуск всего проекта в контейнерах(локально) <a id="all-local"></a>
 1. Клонируйте репозиторий
