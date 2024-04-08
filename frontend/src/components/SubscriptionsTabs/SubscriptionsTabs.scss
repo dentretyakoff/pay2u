@@ -1,0 +1,44 @@
+.MuiTabs-flexContainer {
+  gap: 120px;
+  justify-content: space-between;
+}
+
+.MuiTabs-indicator {
+  display: none;
+}
+
+.MuiButtonBase-root {
+  margin-top: 8px !important;
+  font-size: var(--font-size-m) !important;
+  font-family: var(--font-family-secondary) !important;
+  font-weight: var(--font-weight-semibold) !important;
+  letter-spacing: 0 !important;
+  color: rgba(137, 135, 135, 1) !important;
+  align-items: flex-start !important;
+  padding: 0 !important;
+  text-transform: none !important;
+
+  &:last-of-type {
+    align-items: flex-end !important;
+  }
+}
+
+.Mui-selected {
+  color: var(--primary-color) !important;
+}
+
+.section {
+  margin-top: 16px;
+  font-size: var(--font-size-s);
+  font-family: var(--font-family-secondary);
+
+  &:first-of-type {
+    margin: 0;
+  }
+}
+
+.notFound {
+  margin-top: 32px;
+  font-size: var(--font-size-m);
+  text-align: center;
+}

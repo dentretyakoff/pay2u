@@ -1,0 +1,9 @@
+start:
+	docker compose -f infra/postgres-local.yaml up -d --build
+	sleep 1
+	poetry run task makemigrations
+	sleep 1
+	poetry run task migrate
+	poetry run task loaddata
+	poetry run task createdevuser
+	poetry run task loadpayments

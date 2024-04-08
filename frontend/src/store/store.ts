@@ -1,13 +1,29 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import userReducer from "./reducers/UserSlice";
+import { categoriesAPI } from "services/CategoriesService";
+import { servicesAPI } from "services/ServicesService";
+import { mySubscriptionsAPI } from "services/MySubscriptions";
+import { paymentsAPI } from "services/PaymentsService";
+import { searchReducer as searchSlice } from "./reducers/searchSlice";
 
 const rootReducer = combineReducers({
-  userReducer,
+  search: searchSlice,
+  [categoriesAPI.reducerPath]: categoriesAPI.reducer,
+  [servicesAPI.reducerPath]: servicesAPI.reducer,
+  [mySubscriptionsAPI.reducerPath]: mySubscriptionsAPI.reducer,
+  [paymentsAPI.reducerPath]: paymentsAPI.reducer,
 });
 
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => {
+      return getDefaultMiddleware().concat(
+        categoriesAPI.middleware,
+        servicesAPI.middleware,
+        mySubscriptionsAPI.middleware,
+        paymentsAPI.middleware
+      );
+    },
   });
 };
 

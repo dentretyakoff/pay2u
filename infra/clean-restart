@@ -1,0 +1,6 @@
+start:
+	docker compose -f infra/docker-compose-local.yaml down
+	sleep 1
+	docker volume rm infra_pg_data_pay2u
+	sleep 1
+	docker compose -f infra/docker-compose-local.yaml up -d --build

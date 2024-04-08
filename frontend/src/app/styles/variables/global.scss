@@ -1,0 +1,55 @@
+:root {
+  --font-family-main: "Inter", "Times New Roman", serif;
+  --font-family-secondary: "Roboto", "Times New Roman", serif;
+  --bg-color: #fff;
+  --primary-color: #000;
+  --inverted-primary-color: #fff;
+  --secondary-color: #fff;
+  --inverted-secondary-color: #000;
+  --accent-color: #ea417f;
+  --gray-text: #A7B1BA;
+  --service-plan-color: rgba(230, 220, 241, 0.3);
+  --btn-bc-pink: rgba(234, 65, 127, 0.1);
+  --btn-bc-gray: rgba(244, 246, 247, 1);
+
+  // xs
+  --font-size-xs: 13px;
+  --font-line-xs: 16px;
+  --font-xs: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
+  // s
+  --font-size-s: 15px;
+  --font-line-s: 18px;
+  --font-s: var(--font-size-s) / var(--font-line-s) var(--font-family-main);
+
+  // m
+  --font-size-m: 17px;
+  --font-line-m: 20px;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+
+  // l
+  --font-size-l: 20px;
+  --font-line-l: 22px;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+  // xl
+  --font-size-xl: 21px;
+  --font-line-xl: 24px;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+  // xxl
+  --font-size-xxl: 32px;
+  --font-line-xxl: 36px;
+  --font-xxl: var(--font-size-xxl) / var(--font-line-xxl) var(--font-family-main);
+
+  // font-weight
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // z-indexes
+  --modal-z-index: 10;
+
+  // Shadows
+}

@@ -1,0 +1,47 @@
+.MySubscriptionsPage {
+}
+
+.expenses {
+  display: flex;
+  gap: 16px;
+}
+
+.allTime,
+.byMonth {
+  background: var(--service-plan-color);
+  border-radius: 12px;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.allTime {
+  span {
+    display: inline-block;
+    font-size: var(--font-size-l);
+    color: var(--secondary-color);
+    font-weight: var(--font-weight-semibold);
+    background: var(--accent-color);
+    border-radius: 12px;
+    padding: 3px 8px;
+  }
+
+  p {
+    font-size: var(--font-size-s);
+    line-height: var(--font-line-s);
+    margin-top: 3px;
+  }
+}
+
+.byMonth {
+  div {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  p {
+    font-size: var(--font-size-s);
+    line-height: var(--font-line-s);
+    margin-top: 3px;
+  }
+}

@@ -8,10 +8,12 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "vite.config.ts"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    project: "./tsconfig.json",
+    project: "tsconfig.json",
+    tsconfigRootDir: __dirname,
+    sourceType: "module",
   },
   plugins: ["react-refresh"],
   rules: {
@@ -27,5 +29,13 @@ module.exports = {
     "import/prefer-default-export": "off",
     "react/function-component-definition": "off",
     "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "object-curly-newline": "off",
+    "react/require-default-props": "warn",
+    "react/jsx-one-expression-per-line": "off",
+    "operator-linebreak": "off",
+    "no-else-return": "off",
+    "jsx-a11y/label-has-associated-control": "off",
   },
 };

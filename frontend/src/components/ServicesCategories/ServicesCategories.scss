@@ -1,0 +1,25 @@
+.ServicesCategoriesWrapper {
+  margin-top: 44px;
+}
+.ServicesCategoriesTitle {
+  font-size: var(--font-size-xl);
+  line-height: var(--font-line-xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: 24px;
+}
+.ServicesCategoriesCard {
+  width: 74px;
+  border: none;
+  background: none;
+}
+.ServicesCategoriesLogo {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+}
+.ServicesCategoriesName {
+  margin-top: 8px;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  line-height: var(--font-size-xs);
+}

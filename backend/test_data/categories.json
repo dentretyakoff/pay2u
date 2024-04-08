@@ -1,0 +1,48 @@
+[
+    {
+      "name": "Кино и сериалы",
+      "description": "Описание Кино и сериалы",
+      "image": "movies_and_tv_series.png"
+    },
+    {
+      "name": "Книги",
+      "description": "Описание Книги",
+      "image": "books.png"
+    },
+    {
+      "name": "Музыка",
+      "description": "Описание Музыка",
+      "image": "music.png"
+    },
+    {
+      "name": "Обучение",
+      "description": "Описание Обучение",
+      "image": "training.png"
+    },
+    {
+      "name": "Дом",
+      "description": "Описание Дом",
+      "image": "home.png"
+    },
+    {
+      "name": "Игры и стриминг",
+      "description": "Описание Игры и стриминг",
+      "image": "games_and_streaming.png"
+    },
+    {
+      "name": "Социальные сети",
+      "description": "Описание Социальные сети",
+      "image": "social_media.png"
+    },
+    {
+      "name": "Здоровье",
+      "description": "Описание Здоровье",
+      "image": "charity.png"
+    },
+    {
+      "name": "Облачные хранилища",
+      "description": "Описание Облачные хранилища",
+      "image": "cloud_storage.png"
+    }
+  ]
+  

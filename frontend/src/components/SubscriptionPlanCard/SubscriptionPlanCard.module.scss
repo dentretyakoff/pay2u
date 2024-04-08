@@ -1,0 +1,52 @@
+.SubscriptionPlanCard {
+  width: 100%;
+  padding: 19px 16px;
+  border-radius: 12px;
+  background: var(--service-plan-color);
+  box-shadow: 0 4px 4px rgba(180, 160, 167, 0.2);
+}
+
+.topLine {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-m);
+  line-height: var(--font-line-m);
+}
+
+.title {
+}
+
+.cashback {
+  border-radius: 8px;
+  background: var(--bg-color);
+  padding: 4px;
+  width: 110px;
+}
+
+.price {
+  font-size: var(--font-line-l);
+
+  & span {
+    font-weight: var(--font-weight-bold);
+  }
+}
+
+.fullPrice {
+  font-size: var(--font-size-s);
+  color: #9a9a9a;
+  margin-top: 4px;
+}
+
+.button {
+  display: block;
+  margin-top: 16px;
+  width: 100%;
+  padding: 9px 0;
+  color: var(--accent-color);
+  font-size: var(--font-size-s);
+  line-height: var(--font-line-s);
+  background: var(--bg-color);
+  border-radius: 8px;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+}

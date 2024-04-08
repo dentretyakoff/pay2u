@@ -1,0 +1,14 @@
+[
+    {
+        "payment_id": 1,
+        "cashback_status": false
+    },
+    {
+        "payment_id": 2,
+        "cashback_status": true
+    },
+    {
+        "payment_id": 3,
+        "cashback_status": true
+    }
+]

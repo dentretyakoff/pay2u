@@ -1,0 +1,45 @@
+version: '3.8'
+
+volumes:
+  pg_data_pay2u:
+  static_django:
+
+services:
+  postgres-local:
+    image: postgres:13.3-alpine
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U $${POSTGRES_USER:?err} -d $${POSTGRES_DB:?err}"
+        ]
+      start_period: 30s
+      timeout: 10s
+      interval: 5s
+      retries: 10
+    restart: always
+    volumes:
+      - pg_data_pay2u:/var/lib/postgresql/data/
+    expose:
+      - 5432
+    env_file:
+      - ../.env
+
+  backend:
+    build:
+      context: ../
+      dockerfile: backend.Dockerfile
+    depends_on:
+      postgres-local:
+        condition: service_healthy
+    volumes:
+      - static_django:/app/backend_static
+    ports:
+      - '8000:8000'
+    links:
+      - postgres-local:db
+    environment:
+      - POSTGRES_HOST=postgres-local
+    env_file:
+      - ../.env
+    command: bash -c ./docker-entrypoint.sh
