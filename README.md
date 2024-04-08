@@ -11,6 +11,7 @@
         - [Запуск Django](#start-django)
     - [Команда](#team-backend)
 - [Описание Frontend](#desc-frontend)
+    - [Сборка и Запуск](#start-frontend)
     - [Стек технологий](#stack-frontend)
     - [Команда](#team-frontend)
 
@@ -132,7 +133,7 @@ API будет доступно по адресу http://localhost:8000/api/v1/
 
 ## Описание Frontend <a id="desc-frontend"></a>
 
-### Сборка и Запуск
+### Сборка и Запуск <a id="start-frontend"></a>
 Чтобы собрать проект, выполните следующие шаги:
 1. Установите все зависимости, запустив следующую команду:
     ```
