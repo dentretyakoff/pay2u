@@ -2,7 +2,6 @@ import { memo } from "react";
 import { Link } from "react-router-dom";
 import { IMySubscription } from "models/IMySubscription";
 import { getWordEnding } from "shared/lib/getWordEnding";
-// import { useAddSubscriptionMutation } from "services/MySubscriptions";
 import cls from "./ActiveServiceCard.module.scss";
 
 interface ActiveServiceCardProps {
@@ -14,15 +13,9 @@ interface ActiveServiceCardProps {
 export const ActiveServiceCard = memo((props: ActiveServiceCardProps) => {
   const { data: sub, homepage = false, inactive = false } = props;
 
-  // const [addSubscription] = useAddSubscriptionMutation();
-
   const date = new Date(sub.end_date).toLocaleDateString();
 
   const wordEnding = getWordEnding(sub.subscription_months, "месяц");
-
-  // const handleResubscribe = (): void => {
-  //   addSubscription(Number(sub.id));
-  // };
 
   return (
     <Link
