@@ -18,12 +18,10 @@
 ## Описание <a id="desc"></a>
 Сервис позволяет пользователям следить за своими подписками на развлекательные сервисы. Подписки разбиты на категории для простоты навигации. Пользователь может подключать новые и продлять старые подписки, добавлять понравившееся в избранное. Есть опция учёта расходов и начисленного кэшбека.
 
-url-адрес: https://pay2u.zapto.org/
-
-swagger: https://pay2u.zapto.org/swagger/
+swagger: https://localhost/swagger/
 для выполнения запросов необходимо авторизоваться под пользователем для разработки из файла `.env`. По умолчанию - `dev_user` `dev_user_password`
 
-redoc: https://pay2u.zapto.org/redoc/
+redoc: https://localhost/redoc/
 
 ## Описание Backend <a id="desc-backend"></a>
 Приложение можно запустить разными способами - [раз](#all-local), [два](#all-server), [три](#backend-local).
@@ -42,7 +40,7 @@ redoc: https://pay2u.zapto.org/redoc/
 ### Запуск всего проекта в контейнерах(локально) <a id="all-local"></a>
 1. Клонируйте репозиторий
 ```
-git clone git@github.com:KiryhaUdmurt/pay2u.git
+git clone git@github.com:dentretyakoff/pay2u.git
 ```
 2. Перейдите в каталог с проектом
 ```
@@ -71,7 +69,7 @@ sudo docker compose -f infra/docker-compose-local-all.yaml up -d --build
 3. Скорректируйте конфиг файл `sudo nano /etc/nginx/sites-available/default`
 ```
 server {
-        server_name pay2u.zapto.org;
+        server_name your_dns_name.org;
         location / {
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
